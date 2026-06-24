@@ -2,18 +2,32 @@ import type { JobsRepository } from '@/entities/jobs/jobsRepository';
 import type { TaskUrl } from '@/entities/jobs/taskUrl';
 
 const BATCH_SIZE = 5;
+const REQUEST_TIMEOUT_MS = 10000;
 
 function randomDelay(): Promise<void> {
   const ms = Math.floor(Math.random() * 10001);
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function formatFetchError(err: unknown): string {
+  const error = err as Error & { cause?: Error & { code?: string } };
+  if (error.cause?.code === 'UND_ERR_CONNECT_TIMEOUT') {
+    return `Connection timeout (${REQUEST_TIMEOUT_MS}ms): ${error.cause.message}`;
+  }
+  return error.message || String(err);
+}
+
 async function headRequest(url: string): Promise<{ httpStatus: number; errorMessage?: string }> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
   try {
-    const response = await fetch(url, { method: 'HEAD' });
+    const response = await fetch(url, { method: 'HEAD', signal: controller.signal });
     return { httpStatus: response.status };
   } catch (err) {
-    return { httpStatus: 0, errorMessage: (err as Error).message };
+    return { httpStatus: 0, errorMessage: formatFetchError(err) };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
