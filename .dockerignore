@@ -1,0 +1,13 @@
+node_modules
+.git
+.dockerignore
+apps/backend/node_modules
+apps/backend/dist
+apps/frontend/node_modules
+apps/frontend/dist
+
+/ci-cd
+/.github
+/.cursor
+/README.md
+/AGENTS.md

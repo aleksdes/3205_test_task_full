@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "primevue": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@primevue/mcp"]
+    },
+  }
+}

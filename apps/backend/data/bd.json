@@ -1,0 +1,21 @@
+{
+	"jobs": [
+		{
+			"id": "wpT9PaQGnewepfFRRex8a",
+			"createdAt": "2026-06-24T03:59:47.612Z",
+			"status": "pending",
+			"urlIds": [
+				"MfY0nA8kdVIY5ho4iBx8X"
+			],
+			"stats": null
+		}
+	],
+	"taskUrls": [
+		{
+			"id": "MfY0nA8kdVIY5ho4iBx8X",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "wpT9PaQGnewepfFRRex8a",
+			"status": null
+		}
+	]
+}

@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+description: Vue 3 SFC + TypeScript — обязательный script setup
+---
+
+# Vue 3 + SFC + TypeScript
+
+Источники: [Vue docs](https://vuejs.org/) и [Using Vue with TypeScript](https://vuejs.org/guide/typescript/overview.html).
+
+- **Только Vue 3 SFC + TS**: в компонентах использовать **только** `<script setup lang="ts">`.
+- **Без Options API**: не писать `export default { ... }` / `defineComponent({ ... })`, если это не строго необходимо для интеграции со сторонним кодом.
+- **Props/Emits — типизировать явно**:
+  - `defineProps<{ ... }>()` / `defineEmits<{ (e: 'event', payload: T): void }>()`
+  - runtime-валидацию (если нужна) — отдельно, не вместо типов.
+- **События/модели**: для `v-model`/`update:*` придерживаться типизированных emit-контрактов (не `any`).
+- **Шаблон тоже под TypeScript**: рассчитывать на строгую проверку выражений в `<template>` при `lang="ts`; при необходимости делать явные приведения `(x as T)` точечно.
+- **Избегать `any`**: на границах I/O — `unknown` + сужение/схема; внутри — вывод типов, но без “протекания” `any`.
+- **Импорты типов**: использовать `import type { ... } from '...'` когда импорт нужен только для типов.
+- **CLI typecheck**: помнить, что Vite не делает typecheck при сборке/в девсервере; для проверки типов использовать `vue-tsc` (watch/CI) или отдельный чекер-плагин по месту.
+

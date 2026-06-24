@@ -1,0 +1,24 @@
+{
+  "name": "3205_test_task",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.10.0",
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,green \"env-cmd -f .env pnpm run --filter @3205_test_task/backend dev\" \"env-cmd -f .env pnpm run --filter @3205_test_task/frontend dev\"",
+    "build": "env-cmd -f .env pnpm -r build",
+    "dev:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend dev",
+    "start:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend start",
+    "build:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend build",
+    "dev:frontend": "env-cmd -f .env pnpm run --filter @3205_test_task/frontend dev",
+    "preview:frontend": "env-cmd -f .env pnpm run --filter @3205_test_task/frontend preview",
+    "generate-api:frontend": "pnpm run --filter @3205_test_task/frontend generate-api",
+    "install:all": "pnpm install",
+    "update:deps": "pnpm up -r",
+    "dev:mfe": "pnpm --filter @3205_test_task/jobs-schema-mfe build && pnpm --filter @3205_test_task/jobs-schema-mfe preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.3",
+    "env-cmd": "^11.0.0",
+    "make": "^0.8.1"
+  }
+}
