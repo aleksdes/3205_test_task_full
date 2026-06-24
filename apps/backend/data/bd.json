@@ -1,21 +1,125 @@
 {
 	"jobs": [
 		{
-			"id": "wpT9PaQGnewepfFRRex8a",
-			"createdAt": "2026-06-24T03:59:47.612Z",
-			"status": "pending",
+			"id": "U9pUz214k8IAhE6kUX--h",
+			"createdAt": "2026-06-24T05:49:23.022Z",
+			"status": "completed",
 			"urlIds": [
-				"MfY0nA8kdVIY5ho4iBx8X"
+				"6f8fHGqfgM8E09eJKDzGy",
+				"y8j1iVfYD7NjXgRhMFhkX",
+				"Fkw4CqZdvyEELfYTAkKQR",
+				"XD3pqC7VkIjgjR-u2r0CN",
+				"WhqIxvt4BRJNIGPwNTocR",
+				"d6rFnA3WL_sTNbEMOKmrb",
+				"hWbasOKOVIQP6DbDKnCEn",
+				"1reTC3qIjMFM1DjC_n2WZ",
+				"s1ranlu-b94WQAU-dvmbl",
+				"YWXq4UYowks2pJ9Ryy4v-",
+				"LAZJQFA1QC1GBdEEPrcFP",
+				"bfwnPzjYhUg4bIEkFleuc"
 			],
-			"stats": null
+			"stats": "error"
 		}
 	],
 	"taskUrls": [
 		{
-			"id": "MfY0nA8kdVIY5ho4iBx8X",
+			"id": "6f8fHGqfgM8E09eJKDzGy",
 			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
-			"jobId": "wpT9PaQGnewepfFRRex8a",
-			"status": null
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:36.144Z"
+		},
+		{
+			"id": "y8j1iVfYD7NjXgRhMFhkX",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:40.638Z"
+		},
+		{
+			"id": "Fkw4CqZdvyEELfYTAkKQR",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:39.136Z"
+		},
+		{
+			"id": "XD3pqC7VkIjgjR-u2r0CN",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:41.636Z"
+		},
+		{
+			"id": "WhqIxvt4BRJNIGPwNTocR",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"startTimeJob": "2026-06-24T05:49:23.031Z",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:37.138Z"
+		},
+		{
+			"id": "d6rFnA3WL_sTNbEMOKmrb",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:58.237Z"
+		},
+		{
+			"id": "hWbasOKOVIQP6DbDKnCEn",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:53.245Z"
+		},
+		{
+			"id": "1reTC3qIjMFM1DjC_n2WZ",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:50:01.236Z"
+		},
+		{
+			"id": "s1ranlu-b94WQAU-dvmbl",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"startTimeJob": "2026-06-24T05:49:41.638Z",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:50:00.735Z"
+		},
+		{
+			"id": "YWXq4UYowks2pJ9Ryy4v-",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:49:57.738Z"
+		},
+		{
+			"id": "LAZJQFA1QC1GBdEEPrcFP",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:50:13.802Z"
+		},
+		{
+			"id": "bfwnPzjYhUg4bIEkFleuc",
+			"url": "https://www.youtube.com/watch?v=-k_59yF_5GA&list=LL&index=3&t=4389s",
+			"jobId": "U9pUz214k8IAhE6kUX--h",
+			"status": "error",
+			"startTimeJob": "2026-06-24T05:50:01.239Z",
+			"errorMessage": "fetch failed",
+			"endTimeJob": "2026-06-24T05:50:20.801Z"
 		}
 	]
 }

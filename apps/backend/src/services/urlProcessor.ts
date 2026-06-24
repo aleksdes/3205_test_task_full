@@ -60,7 +60,13 @@ export class UrlProcessor {
 
   private async processBatch(batch: TaskUrl[]): Promise<void> {
     const promises = batch.map((taskUrl) => this.processSingleUrl(taskUrl));
-    await Promise.all(promises);
+    const results = await Promise.allSettled(promises);
+
+    for (const result of results) {
+      if (result.status === 'rejected') {
+        console.error('[UrlProcessor] batch item failed:', result.reason);
+      }
+    }
   }
 
   private async processSingleUrl(taskUrl: TaskUrl): Promise<void> {
