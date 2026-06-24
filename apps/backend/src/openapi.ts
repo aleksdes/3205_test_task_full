@@ -91,6 +91,44 @@ const options: swaggerJSDoc.Options = {
             },
           },
         },
+        JobTaskDetail: {
+          type: 'object',
+          required: ['id', 'createdAt', 'urls'],
+          properties: {
+            id: { type: 'string', example: 'V1StGXR8_Z5jdHi6B-myT' },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+              example: '2026-06-23T10:00:00.000Z',
+            },
+            status: {
+              type: 'string',
+              enum: ['pending', 'in_progress', 'completed', 'cancelled', 'failed'],
+              nullable: true,
+              example: 'pending',
+            },
+            stats: {
+              type: 'string',
+              enum: ['success', 'error'],
+              nullable: true,
+              example: null,
+            },
+            urls: {
+              type: 'array',
+              items: { $ref: '#/components/schemas/TaskUrl' },
+            },
+          },
+        },
+        CreateJobResponse: {
+          type: 'object',
+          required: ['jobId'],
+          properties: {
+            jobId: {
+              type: 'string',
+              example: 'V1StGXR8_Z5jdHi6B-myT',
+            },
+          },
+        },
         Error: {
           type: 'object',
           required: ['error'],

@@ -111,6 +111,70 @@ export function createGetDataRouter(jobService: JobsService): Router {
 
   /**
    * @openapi
+   * /api/jobs/{id}/detail:
+   *   get:
+   *     tags: [jobs]
+   *     summary: Возвращает задачу с подробной информацией о URL
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: ID задачи
+   *     responses:
+   *       200:
+   *         description: Детальная информация о задаче
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/JobTaskDetail'
+   *       400:
+   *         description: ID не указан
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       404:
+   *         description: Задача не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       500:
+   *         description: BD не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   */
+  router.get('/jobs/:id/detail', async (req: Request, res: Response, next: NextFunction) => {
+    const jobId = req.params?.id;
+
+    if (!jobId) {
+      res.status(400).json({ error: 'Job id is required' });
+      return;
+    }
+
+    try {
+      const jobs = await jobService.getJobByIdDetail(String(jobId));
+      res.json(jobs);
+    } catch (err) {
+      if (err instanceof BDNotFoundError) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+
+      if (err instanceof JobsNotFoundError) {
+        res.status(404).json({ error: err.message });
+        return;
+      }
+      next(err);
+    }
+  });
+
+  /**
+   * @openapi
    * /api/jobs:
    *   post:
    *     tags: [jobs]
@@ -127,8 +191,7 @@ export function createGetDataRouter(jobService: JobsService): Router {
    *         content:
    *           application/json:
    *             schema:
-   *               type: array
-   *               items: {}
+   *               $ref: '#/components/schemas/CreateJobResponse'
    *       400:
    *         description: Некорректные URL
    *         content:
@@ -230,6 +293,47 @@ export function createGetDataRouter(jobService: JobsService): Router {
     }
   });
 
+  /**
+   * @openapi
+   * /api/jobs/{id}/tasks:
+   *   get:
+   *     tags: [jobs]
+   *     summary: Возвращает список URL для задачи
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: ID задачи
+   *     responses:
+   *       200:
+   *         description: Список URL задачи
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: array
+   *               items:
+   *                 $ref: '#/components/schemas/TaskUrl'
+   *       400:
+   *         description: ID не указан
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       404:
+   *         description: Задача не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       500:
+   *         description: BD не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   */
   router.get('/jobs/:id/tasks', async (req: Request, res: Response, next: NextFunction) => {
     const jobId = req.params?.id;
 
@@ -254,6 +358,45 @@ export function createGetDataRouter(jobService: JobsService): Router {
     }
   });
 
+  /**
+   * @openapi
+   * /api/tasks/{id}:
+   *   get:
+   *     tags: [jobs]
+   *     summary: Возвращает URL-ссылку по ID
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: ID URL-ссылки
+   *     responses:
+   *       200:
+   *         description: URL-ссылка
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/TaskUrl'
+   *       400:
+   *         description: ID не указан
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       404:
+   *         description: URL-ссылка не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       500:
+   *         description: BD не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   */
   router.get('/tasks/:id', async (req: Request, res: Response, next: NextFunction) => {
     const taskId = req.params?.id;
 
