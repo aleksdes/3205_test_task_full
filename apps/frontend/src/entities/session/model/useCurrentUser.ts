@@ -8,14 +8,14 @@ export declare interface UseCurrentUserReturn {
   /**
    * Данные аккаунта пользователя
    */
-  currentUser: ComputedRef<CurrentUserState | null>
+  currentUser: ComputedRef<CurrentUserState | null>;
   /**
    * Меню пользователя
    */
-  menuItems: ComputedRef<MenuItem[]>
-  fullName: ComputedRef<string>
-  userInitials: ComputedRef<string>
-  setUser: (userData: CurrentUserState | null) => void
+  menuItems: ComputedRef<MenuItem[]>;
+  fullName: ComputedRef<string>;
+  userInitials: ComputedRef<string>;
+  setUser: (userData: CurrentUserState | null) => void;
 }
 
 export function useCurrentUser(

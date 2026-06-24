@@ -8,6 +8,6 @@
   "eslint.workingDirectories": [
     { "pattern": "apps/*/" }
   ],
-  "prettier.configPath": "apps/backend/.prettierrc",
+
   "typescript.enablePromptUseWorkspaceTsdk": true
 }

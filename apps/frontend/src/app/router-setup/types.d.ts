@@ -12,13 +12,13 @@ export interface NavigationPolicy {
   /**
    * Указывает на доступность роута
    */
-  routeAccessibility?: RouteAccessibility
-  allow?: () => boolean
+  routeAccessibility?: RouteAccessibility;
+  allow?: () => boolean;
 }
 
 declare module 'vue-router' {
   interface RouteMeta {
-    arguments?: RouteParamsSchemaBuilder
-    policy?: NavigationPolicy
+    arguments?: RouteParamsSchemaBuilder;
+    policy?: NavigationPolicy;
   }
 }

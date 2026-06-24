@@ -129,6 +129,20 @@ const options: swaggerJSDoc.Options = {
             },
           },
         },
+        PaginatedJobsResponse: {
+          type: 'object',
+          required: ['data', 'total', 'page', 'limit', 'totalPages'],
+          properties: {
+            data: {
+              type: 'array',
+              items: { $ref: '#/components/schemas/JobTask' },
+            },
+            total: { type: 'integer' },
+            page: { type: 'integer' },
+            limit: { type: 'integer' },
+            totalPages: { type: 'integer' },
+          },
+        },
         Error: {
           type: 'object',
           required: ['error'],

@@ -1,7 +1,7 @@
 /* --------------- */
 /* - Text styles - */
 /* --------------- */
-@use "./mixins" as *;
+@use './mixins' as *;
 
 .font-sans {
   font-family: $font-family-base;

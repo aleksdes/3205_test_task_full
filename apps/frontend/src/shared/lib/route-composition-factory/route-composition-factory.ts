@@ -33,7 +33,7 @@ export declare interface UseRouteCompositionReturn<Params> {
    *
    * @param config параметры роута
    */
-  push: (config: Params) => Promise<void | NavigationFailure | undefined>
+  push: (config: Params) => Promise<void | NavigationFailure | undefined>;
 
   /**
    * Вызов метода router.replace
@@ -44,7 +44,7 @@ export declare interface UseRouteCompositionReturn<Params> {
    * @see push
    * @param config конфигурация роута
    */
-  replace: (config: Params) => Promise<void | NavigationFailure | undefined>
+  replace: (config: Params) => Promise<void | NavigationFailure | undefined>;
 
   /**
    * Возвращает объект типа RouteLocationNamedRaw с заданными параметрами роута
@@ -72,7 +72,7 @@ export declare interface UseRouteCompositionReturn<Params> {
    *
    * @param config параметры роута
    */
-  route: (config?: Params) => ComputedRef<RouteLocationRaw>
+  route: (config?: Params) => ComputedRef<RouteLocationRaw>;
 }
 
 export declare interface UseRouteComposition<Params> {
@@ -114,24 +114,24 @@ export declare interface UseRouteComposition<Params> {
    * replaceToExample({ id: '1' }) // router.replace({ name: 'example', params: { id: '1' } })
    * ```
    */
-  (initialParams?: MaybeRefOrGetter<Params> | ComputedRef<Params>): UseRouteCompositionReturn<Params>
+  (initialParams?: MaybeRefOrGetter<Params> | ComputedRef<Params>): UseRouteCompositionReturn<Params>;
 
   /**
    * Необработанная запись маршрута vue-router
    * Предназначена для регистрации маршрута в роутере
    */
-  raw: RouteRecordRaw
+  raw: RouteRecordRaw;
 }
 
 type StringOrNumber = ZodString | ZodNumber
 
 export interface RouteParamsSchemaBuilder {
   params?: {
-    [k: string]: StringOrNumber
-  }
+    [k: string]: StringOrNumber;
+  };
   query?: {
-    [k: string]: StringOrNumber | ZodArray<StringOrNumber>
-  }
+    [k: string]: StringOrNumber | ZodArray<StringOrNumber>;
+  };
 }
 
 type Cast<I extends Record<string, ZodType>> = {

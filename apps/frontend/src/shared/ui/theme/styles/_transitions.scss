@@ -1,10 +1,9 @@
-@use "sass:list";
-$baseCurve:        cubic-bezier(0.4, 0.0, 0.2, 1.0);
-$bounceCurve:      cubic-bezier(0.34, 1.56, 0.64, 1);
+@use 'sass:list';
+$baseCurve: cubic-bezier(0.4, 0, 0.2, 1);
+$bounceCurve: cubic-bezier(0.34, 1.56, 0.64, 1);
 $acceleratedCurve: cubic-bezier(0.22, 1, 0.36, 1);
 $deceleratedCurve: cubic-bezier(0.64, 0, 0.78, 0);
-$sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
-
+$sharpCurve: cubic-bezier(0.83, 0, 0.17, 1);
 
 @mixin transition($props, $curve: $baseCurve, $dur: 200ms, $delay: 0ms) {
   transition-property: $props;
@@ -14,16 +13,16 @@ $sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
 }
 
 @mixin bounceTransition($props, $dur: 300ms, $delay: 0ms) {
-  @include transition($props, $bounceCurve, $dur)
+  @include transition($props, $bounceCurve, $dur);
 }
 @mixin acceleratedTransition($props, $dur: 300ms, $delay: 0ms) {
-  @include transition($props, $acceleratedCurve, $dur)
+  @include transition($props, $acceleratedCurve, $dur);
 }
 @mixin deceleratedTransition($props, $dur: 300ms, $delay: 0ms) {
-  @include transition($props, $acceleratedCurve, $dur)
+  @include transition($props, $acceleratedCurve, $dur);
 }
 @mixin sharpTransition($props, $dur: 300ms, $delay: 0ms) {
-  @include transition($props, $sharpCurve, $dur)
+  @include transition($props, $sharpCurve, $dur);
 }
 
 @mixin combinedTransition($transitions...) {
@@ -42,11 +41,7 @@ $sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
       $delay: list.nth($transition, 4);
     }
 
-    $transitionList: list.append(
-                    $transitionList,
-                    #{$property} #{$duration} #{$timingFunction} #{$delay},
-                    comma
-    );
+    $transitionList: list.append($transitionList, #{$property} #{$duration} #{$timingFunction} #{$delay}, comma);
   }
 
   transition: $transitionList;
@@ -54,33 +49,33 @@ $sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
 
 // Сжатие элемента к верхней границе
 @mixin rubberTransition($dur: 350ms, $origin: top) {
-  &-leave-active, &-enter-active {
+  &-leave-active,
+  &-enter-active {
     @include acceleratedTransition((transform, opacity), $dur);
     transform-origin: $origin;
   }
 
-  &-enter-from, &-leave-to {
-    transform: scaleY(.6);
+  &-enter-from,
+  &-leave-to {
+    transform: scaleY(0.6);
     opacity: 0;
   }
 }
 
 @mixin crossBlurTransition() {
-  &-leave-active, &-enter-active {
-    transform-origin: top center
+  &-leave-active,
+  &-enter-active {
+    transform-origin: top center;
   }
   &-enter-active {
     @include combinedTransition(
-                            (filter, 350ms, $acceleratedCurve),
-                            (opacity, 650ms, $acceleratedCurve),
-                            (transform, 650ms, $bounceCurve)
+      (filter, 350ms, $acceleratedCurve),
+      (opacity, 650ms, $acceleratedCurve),
+      (transform, 650ms, $bounceCurve)
     );
   }
   &-leave-active {
-    @include combinedTransition(
-                            (opacity, 250ms, $acceleratedCurve),
-                            (transform, 270ms, $bounceCurve)
-    );
+    @include combinedTransition((opacity, 250ms, $acceleratedCurve), (transform, 270ms, $bounceCurve));
   }
 
   &-enter-from {
@@ -96,23 +91,27 @@ $sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
 }
 
 @mixin crossFadeTransition($dur: 2s) {
-  &-leave-active, &-enter-active {
+  &-leave-active,
+  &-enter-active {
     @include acceleratedTransition((opacity), $dur);
   }
 
-  &-enter-from, &-leave-to {
+  &-enter-from,
+  &-leave-to {
     opacity: 0;
   }
 }
 
 @mixin rubberCenterTransition($dur: 250ms, $origin: center) {
-  &-leave-active, &-enter-active {
+  &-leave-active,
+  &-enter-active {
     @include acceleratedTransition((transform, opacity), $dur);
     transform-origin: $origin;
   }
 
-  &-enter-from, &-leave-to {
-    transform: scale(.2);
+  &-enter-from,
+  &-leave-to {
+    transform: scale(0.2);
     opacity: 0;
   }
 }
@@ -127,12 +126,12 @@ $sharpCurve:       cubic-bezier(0.83, 0, 0.17, 1);
 
 @keyframes blinkBgAnimation {
   0% {
-    background-color: transparent
+    background-color: transparent;
   }
   5% {
-    background-color: var(--_animate-bg-from)
+    background-color: var(--_animate-bg-from);
   }
   100% {
-    background-color: var(--_animate-bg-to)
+    background-color: var(--_animate-bg-to);
   }
 }

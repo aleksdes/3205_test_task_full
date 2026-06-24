@@ -3,10 +3,10 @@ import type { RouteRecordRaw } from 'vue-router'
 import { HomeRoute, SettingsRoute } from '@/app/router-setup/routes/user-scope-routes'
 
 export interface ISideBarItemRoute {
-  id: string
-  label: string
-  route: RouteRecordRaw
-  icon: string | Component
+  id: string;
+  label: string;
+  route: RouteRecordRaw;
+  icon: string | Component;
 }
 
 export const menuItems: ISideBarItemRoute[] = [

@@ -6,7 +6,7 @@ import { localBDfile } from '@/config';
 import { JobsNotFoundError, UrlNotFoundError } from '@/entities/jobs/jobsErrors';
 import { BDNotFoundError } from '@/services/errorService';
 
-import type { JobsRepository } from '@/entities/jobs/jobsRepository';
+import type { JobsRepository, PaginatedResult } from '@/entities/jobs/jobsRepository';
 import { JobTask, type JobTaskStatus, type JobTaskStats } from '@/entities/jobs/jobTask';
 import { TaskUrl, type TaskUrlStatus } from '@/entities/jobs/taskUrl';
 
@@ -38,12 +38,17 @@ async function writeBdHelper(data: BdJsonType): Promise<void> {
 
 /** Репозиторий: чтение и запись процессов в виде `<имя>.json` в каталоге данных. */
 export class JsonJobsRepository implements JobsRepository {
-  public async get(): Promise<JobTask[]> {
+  public async get(page = 1, limit = 10): Promise<PaginatedResult<JobTask>> {
     const bdData = await readBdHelper();
-    const jobs = bdData.jobs.map((item) => {
-      return new JobTask(item);
-    });
-    return jobs;
+    const sorted = bdData.jobs.sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
+    const total = sorted.length;
+    const totalPages = Math.ceil(total / limit);
+    const start = (page - 1) * limit;
+    const items = sorted.slice(start, start + limit).map((item) => new JobTask(item));
+
+    return { data: items, total, page, limit, totalPages };
   }
 
   public async getOne(id: string): Promise<JobTask> {

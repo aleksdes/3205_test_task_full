@@ -1,5 +1,5 @@
-@use "variables" as *;
-@use "sass:math";
+@use 'variables' as *;
+@use 'sass:math';
 
 @function pxToRem($px) {
   @if $px == 0 {

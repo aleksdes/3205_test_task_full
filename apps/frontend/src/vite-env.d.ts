@@ -21,5 +21,5 @@ declare module '*.svg?view' {
 interface ImportMetaEnv {}
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+  readonly env: ImportMetaEnv;
 }

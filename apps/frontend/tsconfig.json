@@ -4,13 +4,20 @@
     "jsx": "preserve",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
+    "baseUrl": "./",
     "module": "ESNext",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["src/*"]
+    },
     "resolveJsonModule": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "imask"
+    ],
     "allowImportingTsExtensions": true,
 
     /* Linting */
@@ -19,17 +26,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
-    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "isolatedModules": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "imask"
-    ],
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["src/*"]
-    },
+    "skipLibCheck": true,
     "ignoreDeprecations": "6.0"
   },
   "references": [{ "path": "./tsconfig.node.json" }],

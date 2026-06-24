@@ -4,30 +4,30 @@ export declare interface HeaderPageProps {
   /**
    * Название заголовка страницы
    */
-  title?: string
+  title?: string;
   /**
    * Фиксация хедера вверху страницы
    * По дефолту false
    */
-  sticky?: boolean
-  loading?: boolean
+  sticky?: boolean;
+  loading?: boolean;
 }
 
 export declare interface HeaderPageSlots extends SlotsType {
   /**
    * Слот для заголовка или дополнительноый контент к заголовку
    */
-  title: () => any
+  title: () => any;
   /**
    * Слот для центральной части заголовка
    */
-  center: () => any
+  center: () => any;
   /**
    * Слот для правой части заголовка, где располагается селект выбора ресторана
    */
-  append: () => any
+  append: () => any;
   /**
    * Слот для контента под хедером, где фильтры по датам
    */
-  ['append-outer']: () => any
+  ['append-outer']: () => any;
 }

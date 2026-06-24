@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<FieldMessageProps>(), {
 })
 
 const attrs: {
-  [key: string]: unknown
+  [key: string]: unknown;
 } = useAttrs()
 
 const styles = useCssModule()

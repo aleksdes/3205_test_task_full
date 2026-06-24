@@ -14,16 +14,32 @@ export function createGetDataRouter(jobService: JobsService): Router {
    * /api/jobs:
    *   get:
    *     tags: [jobs]
-   *     summary: Возвращает список всех задач
+   *     summary: Возвращает список задач с пагинацией
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         required: false
+   *         schema:
+   *           type: integer
+   *           minimum: 1
+   *           default: 1
+   *         description: Номер страницы
+   *       - in: query
+   *         name: limit
+   *         required: false
+   *         schema:
+   *           type: integer
+   *           minimum: 1
+   *           maximum: 100
+   *           default: 10
+   *         description: Количество элементов на странице
    *     responses:
    *       200:
-   *         description: Список задач
+   *         description: Пагинированный список задач (отсортирован по createdAt DESC)
    *         content:
    *           application/json:
    *             schema:
-   *               type: array
-   *               items:
-   *                 $ref: '#/components/schemas/JobTask'
+   *               $ref: '#/components/schemas/PaginatedJobsResponse'
    *       500:
    *         description: BD не найдена
    *         content:
@@ -31,9 +47,12 @@ export function createGetDataRouter(jobService: JobsService): Router {
    *             schema:
    *               $ref: '#/components/schemas/Error'
    */
-  router.get('/jobs', async (_: Request, res: Response, next: NextFunction) => {
+  router.get('/jobs', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const jobs = await jobService.getJobs();
+      const page = Math.max(1, parseInt(req.query.page as string) || 1);
+      const limit = Math.min(100, Math.max(1, parseInt(req.query.limit as string) || 10));
+
+      const jobs = await jobService.getJobs(page, limit);
       res.json(jobs);
     } catch (err) {
       if (err instanceof BDNotFoundError) {

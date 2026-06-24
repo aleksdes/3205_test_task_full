@@ -5,32 +5,32 @@ import { ref } from 'vue'
 export enum MenuItem {}
 
 export interface CurrentUserState {
-  avatar?: string
-  firstName?: string
-  lastName?: string
-  middleName?: string
-  fullName?: string
-  login?: string
+  avatar?: string;
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  fullName?: string;
+  login?: string;
 }
 
 /**
  * Описание структуры данных сессии
  */
 export declare interface SessionState {
-  accessToken: string | null
-  refreshToken: string | null
-  expiresIn: number | null
-  currentUser: CurrentUserState | null
-  roles: string[]
-  menuItems: MenuItem[]
-  isFake: boolean
-  adminAuthData: IAdminAuthData | null
+  accessToken: string | null;
+  refreshToken: string | null;
+  expiresIn: number | null;
+  currentUser: CurrentUserState | null;
+  roles: string[];
+  menuItems: MenuItem[];
+  isFake: boolean;
+  adminAuthData: IAdminAuthData | null;
 }
 
 export interface IAdminAuthData {
-  impersonateLogin: string
-  impersonateAxaptaId: string
-  impersonateRoles?: string[]
+  impersonateLogin: string;
+  impersonateAxaptaId: string;
+  impersonateRoles?: string[];
 }
 
 /**

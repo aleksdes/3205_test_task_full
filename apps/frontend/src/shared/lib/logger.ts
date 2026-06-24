@@ -54,7 +54,7 @@ const Logger = {
       info(message: string, context: Record<string, any> = {}) {
         const finalContext = { ...initialContext, ...context, code }
         if (!isProduction)
-          console.info(`[INFO] ${code}: ${message}`, finalContext)
+          console.warn(`[INFO] ${code}: ${message}`, finalContext)
       },
     }
   },

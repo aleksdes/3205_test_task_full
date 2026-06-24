@@ -1,5 +1,6 @@
 import type { JobTask } from './jobTask';
 import type { TaskUrl } from './taskUrl';
+import type { PaginatedResult } from './jobsRepository';
 
 export interface CreateJobInput {
   urls: string[];
@@ -12,7 +13,7 @@ export type CreateJobDTOReturn = {
 export type JobTaskDetail = Omit<JobTask, 'urlIds'> & { urls: TaskUrl[] };
 
 export interface JobsService {
-  getJobs(): Promise<JobTask[]>;
+  getJobs(page?: number, limit?: number): Promise<PaginatedResult<JobTask>>;
   getJobById(jobId: string): Promise<JobTask>;
   getJobByIdDetail(jobId: string): Promise<JobTaskDetail>;
   deleteJob(jobId: string): Promise<void>;

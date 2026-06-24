@@ -7,38 +7,38 @@ export interface UseAsyncOperationOptions<ARGS extends any[]> {
   /**
    * Если {true} вызывает метод немедленно
    */
-  immediateCall?: boolean
+  immediateCall?: boolean;
   /**
    * Параметры для вызова асинхронного метода
    */
-  immediateCallInitialParams?: ARGS
+  immediateCallInitialParams?: ARGS;
   /**
    * Устанавливает debounce интервал, вызова асинхронного метода
    */
-  debounce?: number
+  debounce?: number;
   /**
    * Отслеживаемые зависимости, изменение одной из зависимости
    * запустит асинхронную операцию
    */
-  dependencies?: Array<Ref | ComputedRef | WritableComputedRef<any>>
+  dependencies?: Array<Ref | ComputedRef | WritableComputedRef<any>>;
   /**
    * По умолчанию композиция заглушает исклочение не позволяя ему подниматься
    * Это свойство заставляет композицию выбросить оригинальное исключение
    */
-  rethrowExceptions?: boolean
+  rethrowExceptions?: boolean;
 }
 
 export interface UseAsyncOperationReturn<T, ARGS extends any[]> {
-  call: (...args: ARGS) => Promise<T | void>
-  loading: ComputedRef<boolean>
-  updating: ComputedRef<boolean>
-  error: ComputedRef<any | null>
-  errorMessage: ComputedRef<string | null>
+  call: (...args: ARGS) => Promise<T | void>;
+  loading: ComputedRef<boolean>;
+  updating: ComputedRef<boolean>;
+  error: ComputedRef<any | null>;
+  errorMessage: ComputedRef<string | null>;
 
   /**
    * Сброс хранилища
    */
-  $reset: () => void
+  $reset: () => void;
 }
 
 function parseAxiosError(error: AxiosError<{ detail?: string } | undefined>) {

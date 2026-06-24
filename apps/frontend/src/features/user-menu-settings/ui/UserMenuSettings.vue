@@ -7,7 +7,7 @@ import { computed, ref, toRefs } from 'vue'
 import { useCurrentUser } from '@/entities/session'
 
 const props = withDefaults(defineProps<{
-  mini?: boolean
+  mini?: boolean;
 }>(), {
   mini: false,
 })

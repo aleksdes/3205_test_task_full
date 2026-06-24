@@ -1,3 +1,4 @@
+import type { PaginatedResult } from '@/entities/jobs/jobsRepository';
 import type { JobTask } from '@/entities/jobs/jobTask';
 import type {
   CreateJobDTOReturn,
@@ -18,8 +19,8 @@ export class JobService implements JobsService {
     this.urlProcessor = new UrlProcessor(this.jobRepository);
   }
 
-  public async getJobs(): Promise<JobTask[]> {
-    return await this.jobRepository.get();
+  public async getJobs(page?: number, limit?: number): Promise<PaginatedResult<JobTask>> {
+    return await this.jobRepository.get(page, limit);
   }
 
   public async getJobById(jobId: string): Promise<JobTask> {

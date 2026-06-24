@@ -1,6 +1,9 @@
 import path from 'path';
 
-/** Порт, хост и каталог с JSON-файлами процессов (переменные окружения BACKEND_PORT, BACKEND_HOST, BACKEND_DATA_DIR). */
+import dotenv from 'dotenv';
+
+dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+
 export const config = {
   port: Number(process.env.BACKEND_PORT) || 3000,
   host: process.env.BACKEND_HOST || '0.0.0.0',
