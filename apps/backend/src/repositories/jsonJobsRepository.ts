@@ -7,8 +7,8 @@ import { JobsNotFoundError, UrlNotFoundError } from '@/entities/jobs/jobsErrors'
 import { BDNotFoundError } from '@/services/errorService';
 
 import type { JobsRepository } from '@/entities/jobs/jobsRepository';
-import { JobTask } from '@/entities/jobs/jobTask';
-import { TaskUrl } from '@/entities/jobs/taskUrl';
+import { JobTask, type JobTaskStatus, type JobTaskStats } from '@/entities/jobs/jobTask';
+import { TaskUrl, type TaskUrlStatus } from '@/entities/jobs/taskUrl';
 
 /** Описание данных JSON-файле */
 type BdJsonType = {
@@ -29,6 +29,11 @@ async function readBdHelper(): Promise<BdJsonType> {
 
   const data = JSON5.parse(raw) as BdJsonType;
   return data;
+}
+
+async function writeBdHelper(data: BdJsonType): Promise<void> {
+  const json = `${JSON.stringify(data, null, '\t')}\n`;
+  await fs.writeFile(localBDfile(), json, 'utf-8');
 }
 
 /** Репозиторий: чтение и запись процессов в виде `<имя>.json` в каталоге данных. */
@@ -68,42 +73,28 @@ export class JsonJobsRepository implements JobsRepository {
     newJob.updateUrlIds(newUrls.map((item) => item.id));
     bdData.jobs.push(newJob);
 
-    const jsonBd = `${JSON.stringify(bdData, null, '\t')}\n`;
-    await fs.writeFile(localBDfile(), jsonBd, 'utf-8');
+    await writeBdHelper(bdData);
     return newJob;
   }
 
   public async removeJob(id: string): Promise<void> {
-    const jobById = await this.getOne(id);
     const bdData = await readBdHelper();
-    const newJobs = bdData.taskUrls.filter((item) => item.jobId !== jobById.id);
-    const newUrls = bdData.jobs.filter((item) => item.id !== jobById.id);
+    const exists = bdData.jobs.some((item) => item.id === id);
+    if (!exists) {
+      throw new JobsNotFoundError(id);
+    }
 
-    const jsonBd = `${JSON.stringify(
-      {
-        jobs: newJobs,
-        taskUrls: newUrls,
-      },
-      null,
-      '\t',
-    )}\n`;
+    const newJobs = bdData.jobs.filter((item) => item.id !== id);
+    const newUrls = bdData.taskUrls.filter((item) => item.jobId !== id);
 
-    await fs.writeFile(localBDfile(), jsonBd, 'utf-8');
+    await writeBdHelper({ jobs: newJobs, taskUrls: newUrls });
   }
 
   public async getJobUrls(jobId: string): Promise<TaskUrl[]> {
-    const jobData = await this.getOne(jobId);
-    const taskUrls = jobData.urlIds;
-
     const bdData = await readBdHelper();
-    const taskUrlsData = taskUrls.map((url) => {
-      const findUrlData = bdData.taskUrls.find((item) => item.id === url) || null;
-      if (!findUrlData) return null;
+    const taskUrls = bdData.taskUrls.filter((item) => item.jobId === jobId);
 
-      return new TaskUrl(findUrlData);
-    });
-
-    return taskUrlsData.filter(Boolean) as TaskUrl[];
+    return taskUrls.map((item) => new TaskUrl(item));
   }
 
   public async getUrlById(urlId: string): Promise<TaskUrl> {
@@ -113,5 +104,55 @@ export class JsonJobsRepository implements JobsRepository {
       throw new UrlNotFoundError(urlId);
     }
     return new TaskUrl(findUrl);
+  }
+
+  public async updateTaskUrl(
+    taskUrlId: string,
+    data: {
+      status?: TaskUrlStatus | null;
+      httpStatus?: number;
+      errorMessage?: string;
+      startTimeJob?: Date;
+      endTimeJob?: Date;
+    },
+  ): Promise<void> {
+    const bdData = await readBdHelper();
+    const idx = bdData.taskUrls.findIndex((item) => item.id === taskUrlId);
+
+    if (idx === -1) {
+      throw new UrlNotFoundError(taskUrlId);
+    }
+
+    const target = bdData.taskUrls[idx];
+
+    if (data.status !== undefined) target.status = data.status;
+    if (data.httpStatus !== undefined) target.httpStatus = data.httpStatus;
+    if (data.errorMessage !== undefined) target.errorMessage = data.errorMessage;
+    if (data.startTimeJob !== undefined) target.startTimeJob = data.startTimeJob;
+    if (data.endTimeJob !== undefined) target.endTimeJob = data.endTimeJob;
+
+    await writeBdHelper(bdData);
+  }
+
+  public async updateJob(
+    jobId: string,
+    data: {
+      status?: JobTaskStatus | null;
+      stats?: JobTaskStats | null;
+    },
+  ): Promise<void> {
+    const bdData = await readBdHelper();
+    const idx = bdData.jobs.findIndex((item) => item.id === jobId);
+
+    if (idx === -1) {
+      throw new JobsNotFoundError(jobId);
+    }
+
+    const target = bdData.jobs[idx];
+
+    if (data.status !== undefined) target.status = data.status;
+    if (data.stats !== undefined) target.stats = data.stats;
+
+    await writeBdHelper(bdData);
   }
 }
