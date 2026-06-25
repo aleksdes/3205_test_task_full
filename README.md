@@ -6,10 +6,7 @@ Monorepo с бэкендом (Express + TypeScript) и фронтендом (Vue
 
 ```bash
 # Разворачивание через Docker
-pnpm install
-cp .env.example .env
-pnpm build:backend
-pnpm generate-api:frontend
+make init
 docker compose build
 docker compose up -d
 

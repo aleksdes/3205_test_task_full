@@ -10,8 +10,13 @@ setup:
 	kill %1 2>/dev/null || true
 	pnpm dev
 
-start:
-	pnpm dev
+init:
+	pnpm install
+	pnpm build:backend
+	pnpm --filter @3205_test_task/backend start &
+	sleep 2
+	pnpm generate-api:frontend
+	kill %1 2>/dev/null || true
 
 restart:
 	pnpm build:backend
