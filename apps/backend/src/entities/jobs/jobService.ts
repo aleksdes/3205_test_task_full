@@ -21,5 +21,6 @@ export interface JobsService {
   getUrlsJob(jobId: string): Promise<TaskUrl[]>;
   getUrl(urlId: string): Promise<TaskUrl>;
   updateTaskUrl(taskUrlId: string, data: Partial<TaskUrl>): Promise<void>;
-  updateJob(jobId: string, data: Partial<JobTask>): Promise<void>;
+  updateJob(jobId: string, data: Partial<JobTask>): Promise<JobTask>;
+  getJobByIdActivation(jobId: string): Promise<JobTask>;
 }

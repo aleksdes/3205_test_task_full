@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import Button from 'primevue/button'
+import Column from 'primevue/column'
+import DataTable from 'primevue/datatable'
 import Paginator from 'primevue/paginator'
+import Tag from 'primevue/tag'
 import { computed, useCssModule } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { JobDetailRoute } from '@/app/router-setup/routes/user-scope-routes'
 import { useJobs } from '@/entities/jobs'
+import { useJobActivation } from '@/features/jobs/job-activation'
 import { useAsyncOperation } from '@/shared/lib/async-operation'
+import { dayjs } from '@/shared/lib/dayjs'
 import { AsyncWrapper } from '@/shared/ui/async-wrapper'
 
 const styles = useCssModule()
@@ -13,6 +20,7 @@ const router = useRouter()
 
 const { fetchJobs } = useJobs()
 const { jobs, metaJobs } = storeToRefs(useJobs())
+const { activateJob, activateJobError } = useJobActivation()
 
 const params = computed(() => ({
   page: Number(route.query.page) || 1,
@@ -40,6 +48,17 @@ function onPageChange(event: { page: number; rows: number }) {
 }
 
 const hasJobs = computed(() => jobs.value.length > 0)
+
+const goToJobDetail = JobDetailRoute()
+function goDetail(id: string) {
+  goToJobDetail.push({ params: { id } })
+}
+async function onActivateJob(jobId: string) {
+  await activateJob(jobId)
+  if (!activateJobError.value) {
+    _refetchJobs()
+  }
+}
 </script>
 
 <template>
@@ -54,23 +73,68 @@ const hasJobs = computed(() => jobs.value.length > 0)
         is-updating-fixed
         is-error-fixed
       >
-        <div v-if="hasJobs" :class="styles['content-container']">
-          <div :class="styles['jobs-table']">
-            <div v-for="job in jobs" :key="job.id" :class="styles['jobs-table__row']">
-              <div :class="styles['jobs-table__cell']">
-                <span :class="styles['jobs-table__label']">ID</span>
-                <span>{{ job.id }}</span>
-              </div>
-              <div :class="styles['jobs-table__cell']">
-                <span :class="styles['jobs-table__label']">Статус</span>
-                <span>{{ job.status ?? '—' }}</span>
-              </div>
-              <div :class="styles['jobs-table__cell']">
-                <span :class="styles['jobs-table__label']">Создан</span>
-                <span>{{ new Date(job.createdAt).toLocaleString() }}</span>
-              </div>
-            </div>
-          </div>
+        <div v-if="hasJobs">
+          <DataTable
+            :value="jobs"
+            striped-rows
+            size="small"
+            scrollable
+            scroll-height="700px"
+            :pt="{
+              wrapper: { class: 'overflow-x-auto' },
+              row: { class: 'cursor-pointer' },
+            }"
+            @row-click="(e) => goDetail(e.data.id)"
+          >
+            <Column field="id" header="ID">
+              <template #body="{ data }">
+                <span class="font-mono text-sm">{{ data.id }}</span>
+              </template>
+            </Column>
+            <Column header="Дата создания">
+              <template #body="{ data }">
+                {{ dayjs(data.createdAt).format('DD.MM.YYYY HH:mm') }}
+              </template>
+            </Column>
+            <Column
+              header="Количество Url"
+              header-class="jobs-table__url-header"
+              body-style="text-align:center"
+            >
+              <template #body="{ data }">
+                {{ data.urlIds?.length ?? 0 }}
+              </template>
+            </Column>
+            <Column field="status" header="Статус обработки">
+              <template #body="{ data }">
+                <Tag
+                  v-if="data.status"
+                  :value="data.status"
+                  :severity="
+                    data.status === 'completed'
+                      ? 'success'
+                      : data.status === 'in_progress'
+                        ? 'info'
+                        : data.status === 'failed'
+                          ? 'danger'
+                          : 'warn'
+                  "
+                />
+                <span v-else>—</span>
+              </template>
+            </Column>
+            <Column header="" body-style="text-align:end">
+              <template #body="{ data }">
+                <Button
+                  label="Запустить проверку"
+                  size="small"
+                  severity="primary"
+                  :disabled="data.status === 'in_progress'"
+                  @click.stop="onActivateJob(data.id)"
+                />
+              </template>
+            </Column>
+          </DataTable>
         </div>
 
         <template v-else>
@@ -83,7 +147,7 @@ const hasJobs = computed(() => jobs.value.length > 0)
       </AsyncWrapper>
     </div>
 
-    <div v-if="metaJobs && metaJobs.totalPages > 1" :class="styles['paginator-wrapper']">
+    <div v-if="metaJobs" :class="styles['paginator-wrapper']">
       <Paginator
         :first="(metaJobs.page - 1) * metaJobs.limit"
         :rows="metaJobs.limit"
@@ -94,6 +158,12 @@ const hasJobs = computed(() => jobs.value.length > 0)
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+:deep(.jobs-table__url-header div) {
+  justify-content: center;
+}
+</style>
 
 <style module lang="scss">
 .home-page {
@@ -108,41 +178,9 @@ const hasJobs = computed(() => jobs.value.length > 0)
 
   padding: var(--card--padding-sm);
   width: 100%;
-  flex: 1;
-  min-height: 0;
 
   @media (min-width: 768px) {
     padding: var(--card--padding);
-  }
-}
-
-.content-container {
-  height: 100%;
-  overflow-y: auto;
-}
-
-.jobs-table {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  &__row {
-    display: flex;
-    gap: 16px;
-    padding: 12px 16px;
-    background: var(--p-zinc-100);
-    border-radius: var(--radius-xl);
-  }
-
-  &__cell {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  &__label {
-    font-size: 12px;
-    color: var(--p-zinc-500);
   }
 }
 

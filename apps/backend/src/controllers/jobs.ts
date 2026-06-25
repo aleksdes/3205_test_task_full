@@ -194,6 +194,70 @@ export function createGetDataRouter(jobService: JobsService): Router {
 
   /**
    * @openapi
+   * /api/jobs/{id}/activation:
+   *   get:
+   *     tags: [jobs]
+   *     summary: Активирует задачу (запускает проверку URL)
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: ID задачи
+   *     responses:
+   *       200:
+   *         description: Задача активирована
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/JobTask'
+   *       400:
+   *         description: ID не указан
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       404:
+   *         description: Задача не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   *       500:
+   *         description: BD не найдена
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Error'
+   */
+  router.get('/jobs/:id/activation', async (req: Request, res: Response, next: NextFunction) => {
+    const jobId = req.params?.id;
+
+    if (!jobId) {
+      res.status(400).json({ error: 'Job id is required' });
+      return;
+    }
+
+    try {
+      const jobs = await jobService.getJobByIdActivation(String(jobId));
+      res.json(jobs);
+    } catch (err) {
+      if (err instanceof BDNotFoundError) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+
+      if (err instanceof JobsNotFoundError) {
+        res.status(404).json({ error: err.message });
+        return;
+      }
+      next(err);
+    }
+  });
+
+  /**
+   * @openapi
    * /api/jobs:
    *   post:
    *     tags: [jobs]

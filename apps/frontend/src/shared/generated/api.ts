@@ -11,17 +11,17 @@
 
 export interface CreateJobInput {
   /** @example ["https://example.com","https://test.com"] */
-  urls: string[];
+  urls: string[]
 }
 
 export interface CreateJobResponse {
   /** @example "V1StGXR8_Z5jdHi6B-myT" */
-  jobId: string;
+  jobId: string
 }
 
 export interface Error {
   /** @example "Job "V1StGXR8_Z5jdHi6B-myT" was not found" */
-  error: string;
+  error: string
 }
 
 export interface JobTask {
@@ -29,15 +29,15 @@ export interface JobTask {
    * @format date-time
    * @example "2026-06-23T10:00:00.000Z"
    */
-  createdAt: string;
+  createdAt: string
   /** @example "V1StGXR8_Z5jdHi6B-myT" */
-  id: string;
+  id: string
   /** @example null */
-  stats?: JobTaskStatsEnum;
+  stats?: JobTaskStatsEnum
   /** @example "pending" */
-  status?: JobTaskStatusEnum;
+  status?: JobTaskStatusEnum
   /** @example [] */
-  urlIds?: string[];
+  urlIds?: string[]
 }
 
 export interface JobTaskDetail {
@@ -45,55 +45,57 @@ export interface JobTaskDetail {
    * @format date-time
    * @example "2026-06-23T10:00:00.000Z"
    */
-  createdAt: string;
+  createdAt: string
   /** @example "V1StGXR8_Z5jdHi6B-myT" */
-  id: string;
+  id: string
   /** @example null */
-  stats?: JobTaskDetailStatsEnum;
+  stats?: JobTaskDetailStatsEnum
   /** @example "pending" */
-  status?: JobTaskDetailStatusEnum;
-  urls: TaskUrl[];
+  status?: JobTaskDetailStatusEnum
+  urls: TaskUrl[]
 }
 
 /** @example null */
 export enum JobTaskDetailStatsEnum {
-  Success = "success",
-  Error = "error",
+  Success = 'success',
+  Error = 'error',
 }
 
 /** @example "pending" */
 export enum JobTaskDetailStatusEnum {
-  Pending = "pending",
-  InProgress = "in_progress",
-  Completed = "completed",
-  Cancelled = "cancelled",
-  Failed = "failed",
+  Pending = 'pending',
+  InProgress = 'in_progress',
+  Completed = 'completed',
+  Cancelled = 'cancelled',
+  Failed = 'failed',
 }
 
 /** @example null */
 export enum JobTaskStatsEnum {
-  Success = "success",
-  Error = "error",
+  Success = 'success',
+  Error = 'error',
 }
 
 /** @example "pending" */
 export enum JobTaskStatusEnum {
-  Pending = "pending",
-  InProgress = "in_progress",
-  Completed = "completed",
-  Cancelled = "cancelled",
-  Failed = "failed",
+  Pending = 'pending',
+  InProgress = 'in_progress',
+  Completed = 'completed',
+  Cancelled = 'cancelled',
+  Failed = 'failed',
 }
 
-export type JobsCreateData = CreateJobResponse;
+export type JobsActivationDetailData = JobTask
 
-export type JobsDeleteData = object;
+export type JobsCreateData = CreateJobResponse
 
-export type JobsDetailData = JobTask;
+export type JobsDeleteData = object
 
-export type JobsDetailDetailData = JobTaskDetail;
+export type JobsDetailData = JobTask
 
-export type JobsListData = PaginatedJobsResponse;
+export type JobsDetailDetailData = JobTaskDetail
+
+export type JobsListData = PaginatedJobsResponse
 
 export interface JobsListParams {
   /**
@@ -102,23 +104,23 @@ export interface JobsListParams {
    * @max 100
    * @default 10
    */
-  limit?: number;
+  limit?: number
   /**
    * Номер страницы
    * @min 1
    * @default 1
    */
-  page?: number;
+  page?: number
 }
 
-export type JobsTasksDetailData = TaskUrl[];
+export type JobsTasksDetailData = TaskUrl[]
 
 export interface PaginatedJobsResponse {
-  data: JobTask[];
-  limit: number;
-  page: number;
-  total: number;
-  totalPages: number;
+  data: JobTask[]
+  limit: number
+  page: number
+  total: number
+  totalPages: number
 }
 
 export interface TaskUrl {
@@ -126,38 +128,56 @@ export interface TaskUrl {
    * @format date-time
    * @example null
    */
-  endTimeJob?: string | null;
+  endTimeJob?: string | null
   /** @example null */
-  errorMessage?: string | null;
+  errorMessage?: string | null
   /** @example 200 */
-  httpStatus?: number | null;
+  httpStatus?: number | null
   /** @example "V1StGXR8_Z5jdHi6B-myT" */
-  id: string;
+  id: string
   /** @example "V1StGXR8_Z5jdHi6B-myT" */
-  jobId: string;
+  jobId: string
   /**
    * @format date-time
    * @example null
    */
-  startTimeJob?: string | null;
+  startTimeJob?: string | null
   /** @example "pending" */
-  status?: TaskUrlStatusEnum;
+  status?: TaskUrlStatusEnum
   /** @example "https://example.com" */
-  url: string;
+  url: string
 }
 
 /** @example "pending" */
 export enum TaskUrlStatusEnum {
-  Pending = "pending",
-  InProgress = "in_progress",
-  Success = "success",
-  Error = "error",
-  Cancelled = "cancelled",
+  Pending = 'pending',
+  InProgress = 'in_progress',
+  Success = 'success',
+  Error = 'error',
+  Cancelled = 'cancelled',
 }
 
-export type TasksDetailData = TaskUrl;
+export type TasksDetailData = TaskUrl
 
 export namespace Jobs {
+  /**
+   * No description
+   * @tags jobs
+   * @name JobsActivationDetail
+   * @summary Активирует задачу (запускает проверку URL)
+   * @request GET:/api/jobs/{id}/activation
+   */
+  export namespace JobsActivationDetail {
+    export type RequestParams = {
+      /** ID задачи */
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsActivationDetailData
+  }
+
   /**
    * No description
    * @tags jobs
@@ -166,11 +186,11 @@ export namespace Jobs {
    * @request POST:/api/jobs
    */
   export namespace JobsCreate {
-    export type RequestParams = {};
-    export type RequestQuery = {};
-    export type RequestBody = CreateJobInput;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsCreateData;
+    export type RequestParams = {}
+    export type RequestQuery = {}
+    export type RequestBody = CreateJobInput
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsCreateData
   }
 
   /**
@@ -183,12 +203,12 @@ export namespace Jobs {
   export namespace JobsDelete {
     export type RequestParams = {
       /** ID задачи */
-      id: string;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsDeleteData;
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsDeleteData
   }
 
   /**
@@ -201,12 +221,12 @@ export namespace Jobs {
   export namespace JobsDetail {
     export type RequestParams = {
       /** ID задачи */
-      id: string;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsDetailData;
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsDetailData
   }
 
   /**
@@ -219,12 +239,12 @@ export namespace Jobs {
   export namespace JobsDetailDetail {
     export type RequestParams = {
       /** ID задачи */
-      id: string;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsDetailDetailData;
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsDetailDetailData
   }
 
   /**
@@ -235,7 +255,7 @@ export namespace Jobs {
    * @request GET:/api/jobs
    */
   export namespace JobsList {
-    export type RequestParams = {};
+    export type RequestParams = {}
     export type RequestQuery = {
       /**
        * Количество элементов на странице
@@ -243,17 +263,17 @@ export namespace Jobs {
        * @max 100
        * @default 10
        */
-      limit?: number;
+      limit?: number
       /**
        * Номер страницы
        * @min 1
        * @default 1
        */
-      page?: number;
-    };
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsListData;
+      page?: number
+    }
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsListData
   }
 
   /**
@@ -266,12 +286,12 @@ export namespace Jobs {
   export namespace JobsTasksDetail {
     export type RequestParams = {
       /** ID задачи */
-      id: string;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = JobsTasksDetailData;
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = JobsTasksDetailData
   }
 
   /**
@@ -284,108 +304,126 @@ export namespace Jobs {
   export namespace TasksDetail {
     export type RequestParams = {
       /** ID URL-ссылки */
-      id: string;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = TasksDetailData;
+      id: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = TasksDetailData
   }
 }
 
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";
-import axios from "axios";
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  HeadersDefaults,
+  ResponseType,
+} from 'axios'
+import axios from 'axios'
 
-export type QueryParamsType = Record<string | number, any>;
+export type QueryParamsType = Record<string | number, any>
 
-export interface FullRequestParams extends Omit<AxiosRequestConfig, "data" | "params" | "url" | "responseType"> {
+export interface FullRequestParams
+  extends Omit<AxiosRequestConfig, 'data' | 'params' | 'url' | 'responseType'> {
   /** set parameter to `true` for call `securityWorker` for this request */
-  secure?: boolean;
+  secure?: boolean
   /** request path */
-  path: string;
+  path: string
   /** content type of request body */
-  type?: ContentType;
+  type?: ContentType
   /** query params */
-  query?: QueryParamsType;
+  query?: QueryParamsType
   /** format of response (i.e. response.json() -> format: "json") */
-  format?: ResponseType;
+  format?: ResponseType
   /** request body */
-  body?: unknown;
+  body?: unknown
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
+export type RequestParams = Omit<FullRequestParams, 'body' | 'method' | 'query' | 'path'>
 
-export interface ApiConfig<SecurityDataType = unknown> extends Omit<AxiosRequestConfig, "data" | "cancelToken"> {
+export interface ApiConfig<SecurityDataType = unknown>
+  extends Omit<AxiosRequestConfig, 'data' | 'cancelToken'> {
   securityWorker?: (
     securityData: SecurityDataType | null,
-  ) => Promise<AxiosRequestConfig | void> | AxiosRequestConfig | void;
-  secure?: boolean;
-  format?: ResponseType;
+  ) => Promise<AxiosRequestConfig | void> | AxiosRequestConfig | void
+  secure?: boolean
+  format?: ResponseType
 }
 
 export enum ContentType {
-  Json = "application/json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public instance: AxiosInstance;
-  private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
-  private secure?: boolean;
-  private format?: ResponseType;
+  public instance: AxiosInstance
+  private securityData: SecurityDataType | null = null
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker']
+  private secure?: boolean
+  private format?: ResponseType
 
-  constructor({ securityWorker, secure, format, ...axiosConfig }: ApiConfig<SecurityDataType> = {}) {
-    this.instance = axios.create({ ...axiosConfig, baseURL: axiosConfig.baseURL || "/" });
-    this.secure = secure;
-    this.format = format;
-    this.securityWorker = securityWorker;
+  constructor({
+    securityWorker,
+    secure,
+    format,
+    ...axiosConfig
+  }: ApiConfig<SecurityDataType> = {}) {
+    this.instance = axios.create({ ...axiosConfig, baseURL: axiosConfig.baseURL || '/' })
+    this.secure = secure
+    this.format = format
+    this.securityWorker = securityWorker
   }
 
   public setSecurityData = (data: SecurityDataType | null) => {
-    this.securityData = data;
-  };
+    this.securityData = data
+  }
 
-  protected mergeRequestParams(params1: AxiosRequestConfig, params2?: AxiosRequestConfig): AxiosRequestConfig {
-    const method = params1.method || (params2 && params2.method);
+  protected mergeRequestParams(
+    params1: AxiosRequestConfig,
+    params2?: AxiosRequestConfig,
+  ): AxiosRequestConfig {
+    const method = params1.method || (params2 && params2.method)
 
     return {
       ...this.instance.defaults,
       ...params1,
       ...(params2 || {}),
       headers: {
-        ...((method && this.instance.defaults.headers[method.toLowerCase() as keyof HeadersDefaults]) || {}),
+        ...((method &&
+          this.instance.defaults.headers[method.toLowerCase() as keyof HeadersDefaults]) ||
+          {}),
         ...(params1.headers || {}),
         ...((params2 && params2.headers) || {}),
       },
-    };
+    }
   }
 
   protected stringifyFormItem(formItem: unknown) {
-    if (typeof formItem === "object" && formItem !== null) {
-      return JSON.stringify(formItem);
+    if (typeof formItem === 'object' && formItem !== null) {
+      return JSON.stringify(formItem)
     } else {
-      return `${formItem}`;
+      return `${formItem}`
     }
   }
 
   protected createFormData(input: Record<string, unknown>): FormData {
     if (input instanceof FormData) {
-      return input;
+      return input
     }
     return Object.keys(input || {}).reduce((formData, key) => {
-      const property = input[key];
-      const propertyContent: any[] = property instanceof Array ? property : [property];
+      const property = input[key]
+      const propertyContent: any[] = property instanceof Array ? property : [property]
 
       for (const formItem of propertyContent) {
-        const isFileType = formItem instanceof Blob || formItem instanceof File;
-        formData.append(key, isFileType ? formItem : this.stringifyFormItem(formItem));
+        const isFileType = formItem instanceof Blob || formItem instanceof File
+        formData.append(key, isFileType ? formItem : this.stringifyFormItem(formItem))
       }
 
-      return formData;
-    }, new FormData());
+      return formData
+    }, new FormData())
   }
 
   public request = async <T = any, _E = any>({
@@ -398,33 +436,33 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<AxiosResponse<T>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
-      {};
-    const requestParams = this.mergeRequestParams(params, secureParams);
-    const responseFormat = format || this.format || undefined;
+      {}
+    const requestParams = this.mergeRequestParams(params, secureParams)
+    const responseFormat = format || this.format || undefined
 
-    if (type === ContentType.FormData && body && body !== null && typeof body === "object") {
-      body = this.createFormData(body as Record<string, unknown>);
+    if (type === ContentType.FormData && body && body !== null && typeof body === 'object') {
+      body = this.createFormData(body as Record<string, unknown>)
     }
 
-    if (type === ContentType.Text && body && body !== null && typeof body !== "string") {
-      body = JSON.stringify(body);
+    if (type === ContentType.Text && body && body !== null && typeof body !== 'string') {
+      body = JSON.stringify(body)
     }
 
     return this.instance.request({
       ...requestParams,
       headers: {
         ...(requestParams.headers || {}),
-        ...(type ? { "Content-Type": type } : {}),
+        ...(type ? { 'Content-Type': type } : {}),
       },
       params: query,
       responseType: responseFormat,
       data: body,
       url: path,
-    });
-  };
+    })
+  }
 }
 
 /**
@@ -435,13 +473,29 @@ export class HttpClient<SecurityDataType = unknown> {
  * Бэкенд url-task: создание задач (jobs) с проверкой доступности URL.
  */
 export class Api<SecurityDataType extends unknown> {
-  http: HttpClient<SecurityDataType>;
+  http: HttpClient<SecurityDataType>
 
   constructor(http: HttpClient<SecurityDataType>) {
-    this.http = http;
+    this.http = http
   }
 
   jobs = {
+    /**
+     * No description
+     *
+     * @tags jobs
+     * @name JobsActivationDetail
+     * @summary Активирует задачу (запускает проверку URL)
+     * @request GET:/api/jobs/{id}/activation
+     */
+    jobsActivationDetail: (id: string, params: RequestParams = {}) =>
+      this.http.request<JobsActivationDetailData, Error>({
+        path: `/api/jobs/${id}/activation`,
+        method: 'GET',
+        format: 'json',
+        ...params,
+      }),
+
     /**
      * No description
      *
@@ -453,10 +507,10 @@ export class Api<SecurityDataType extends unknown> {
     jobsCreate: (data: CreateJobInput, params: RequestParams = {}) =>
       this.http.request<JobsCreateData, Error>({
         path: `/api/jobs`,
-        method: "POST",
+        method: 'POST',
         body: data,
         type: ContentType.Json,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -471,8 +525,8 @@ export class Api<SecurityDataType extends unknown> {
     jobsDelete: (id: string, params: RequestParams = {}) =>
       this.http.request<JobsDeleteData, Error>({
         path: `/api/jobs/${id}`,
-        method: "DELETE",
-        format: "json",
+        method: 'DELETE',
+        format: 'json',
         ...params,
       }),
 
@@ -487,8 +541,8 @@ export class Api<SecurityDataType extends unknown> {
     jobsDetail: (id: string, params: RequestParams = {}) =>
       this.http.request<JobsDetailData, Error>({
         path: `/api/jobs/${id}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -503,8 +557,8 @@ export class Api<SecurityDataType extends unknown> {
     jobsDetailDetail: (id: string, params: RequestParams = {}) =>
       this.http.request<JobsDetailDetailData, Error>({
         path: `/api/jobs/${id}/detail`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -519,9 +573,9 @@ export class Api<SecurityDataType extends unknown> {
     jobsList: (query: JobsListParams, params: RequestParams = {}) =>
       this.http.request<JobsListData, Error>({
         path: `/api/jobs`,
-        method: "GET",
+        method: 'GET',
         query: query,
-        format: "json",
+        format: 'json',
         ...params,
       }),
 
@@ -536,8 +590,8 @@ export class Api<SecurityDataType extends unknown> {
     jobsTasksDetail: (id: string, params: RequestParams = {}) =>
       this.http.request<JobsTasksDetailData, Error>({
         path: `/api/jobs/${id}/tasks`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
 
@@ -552,9 +606,9 @@ export class Api<SecurityDataType extends unknown> {
     tasksDetail: (id: string, params: RequestParams = {}) =>
       this.http.request<TasksDetailData, Error>({
         path: `/api/tasks/${id}`,
-        method: "GET",
-        format: "json",
+        method: 'GET',
+        format: 'json',
         ...params,
       }),
-  };
+  }
 }

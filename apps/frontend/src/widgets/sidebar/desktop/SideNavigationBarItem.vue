@@ -35,9 +35,9 @@ const isParentActive = computed(() => {
   const targetPath = dataRoute.value.route.path
   const targetName = dataRoute.value.route.name?.toString()
 
-  return route.path.startsWith(targetPath)
-    || (route.name && route.name?.toString().startsWith(targetName))
-    || route.path.includes(targetPath)
+  return route.path.startsWith(targetPath) ||
+    (route.name && route.name?.toString().startsWith(targetName)) ||
+    route.path.includes(targetPath)
 })
 
 const isActive = computed(() => {

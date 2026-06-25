@@ -40,6 +40,12 @@ export class JobService implements JobsService {
     } as JobTaskDetail;
   }
 
+  public async getJobByIdActivation(jobId: string): Promise<JobTask> {
+    const jobPath = await this.jobRepository.updateJob(jobId, { status: 'in_progress' });
+    this.urlProcessor.processJob(jobPath.id);
+    return jobPath;
+  }
+
   public async deleteJob(jobId: string): Promise<void> {
     return await this.jobRepository.removeJob(jobId);
   }
@@ -64,7 +70,7 @@ export class JobService implements JobsService {
     return await this.jobRepository.updateTaskUrl(taskUrlId, data);
   }
 
-  public async updateJob(jobId: string, data: Partial<JobTask>): Promise<void> {
+  public async updateJob(jobId: string, data: Partial<JobTask>): Promise<JobTask> {
     return await this.jobRepository.updateJob(jobId, data);
   }
 }

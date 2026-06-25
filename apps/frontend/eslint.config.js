@@ -5,10 +5,9 @@ export default antfu({
   vue: true,
   rules: {
     'vue/no-setup-props-reactivity-loss': 'error',
-    'style/member-delimiter-style': ['error', {
-      multiline: { delimiter: 'semi', requireLast: true },
-      singleline: { delimiter: 'semi', requireLast: false },
-    }],
+    'antfu/if-newline': 'off',
+    'style/operator-linebreak': ['error', 'after'],
+    'style/member-delimiter-style': 'off',
   },
   ignores: [
     '.cursor',

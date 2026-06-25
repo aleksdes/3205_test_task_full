@@ -5,7 +5,7 @@ import type {
   Router,
   RouteRecordRaw,
 } from 'vue-router'
-import type { z, ZodArray, ZodNumber, ZodString, ZodType } from 'zod'
+import type { z, ZodArray, ZodType } from 'zod'
 import { isUndefined } from 'lodash-es'
 import { computed, toValue } from 'vue'
 import { useRouter } from 'vue-router'
@@ -123,7 +123,7 @@ export declare interface UseRouteComposition<Params> {
   raw: RouteRecordRaw;
 }
 
-type StringOrNumber = ZodString | ZodNumber
+type StringOrNumber = ZodType
 
 export interface RouteParamsSchemaBuilder {
   params?: {

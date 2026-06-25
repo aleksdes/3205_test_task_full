@@ -28,8 +28,8 @@ export function createInstance() {
     retries: 3,
     retryCondition(error) {
       return (
-        error.code !== AxiosError.ERR_CANCELED // Игнорирование ошибок отмены запросов
-        && ['401', '422', '400'].includes(`${error.status}`) === false) // Игнорирование ошибок которые не исправить повторным запросом
+        error.code !== AxiosError.ERR_CANCELED && // Игнорирование ошибок отмены запросов
+        ['401', '422', '400'].includes(`${error.status}`) === false) // Игнорирование ошибок которые не исправить повторным запросом
     },
   })
 

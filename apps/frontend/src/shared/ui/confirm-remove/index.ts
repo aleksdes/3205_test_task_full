@@ -6,9 +6,9 @@ export function useConfirmRemove() {
   return (title?: string | null) =>
     new Promise<boolean>((resolve) => {
       confirm.require({
-        message: title
-          ? `Удалить "${title}"? Это действие нельзя отменить.`
-          : 'Удалить элемент? Это действие нельзя отменить.',
+        message: title ?
+          `Удалить "${title}"? Это действие нельзя отменить.` :
+          'Удалить элемент? Это действие нельзя отменить.',
         header: 'Подтверждение удаления',
         icon: 'pi pi-exclamation-triangle',
         rejectProps: {

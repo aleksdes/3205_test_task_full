@@ -7,6 +7,10 @@ export interface ICreateDTOUrl {
   jobId: string;
   id?: string;
   status?: TaskUrlStatus | null;
+  httpStatus?: number;
+  errorMessage?: string;
+  startTimeJob?: Date;
+  endTimeJob?: Date;
 }
 
 export class TaskUrl {
@@ -24,6 +28,10 @@ export class TaskUrl {
     this.url = dataUrl.url;
     this.jobId = dataUrl.jobId;
     this.status = dataUrl.status || null;
+    this.httpStatus = dataUrl.httpStatus;
+    this.errorMessage = dataUrl.errorMessage;
+    this.startTimeJob = dataUrl.startTimeJob;
+    this.endTimeJob = dataUrl.endTimeJob;
   }
 
   public markInProgress(): void {

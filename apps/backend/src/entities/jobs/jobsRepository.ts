@@ -18,5 +18,5 @@ export interface JobsRepository {
   getJobUrls(jobId: string): Promise<TaskUrl[]>;
   getUrlById(urlId: string): Promise<TaskUrl>;
   updateTaskUrl(taskUrlId: string, data: Partial<TaskUrl>): Promise<void>;
-  updateJob(jobId: string, data: Partial<JobTask>): Promise<void>;
+  updateJob(jobId: string, data: Partial<JobTask>): Promise<JobTask>;
 }

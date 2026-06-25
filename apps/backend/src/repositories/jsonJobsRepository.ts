@@ -145,7 +145,7 @@ export class JsonJobsRepository implements JobsRepository {
       status?: JobTaskStatus | null;
       stats?: JobTaskStats | null;
     },
-  ): Promise<void> {
+  ): Promise<JobTask> {
     const bdData = await readBdHelper();
     const idx = bdData.jobs.findIndex((item) => item.id === jobId);
 
@@ -159,5 +159,6 @@ export class JsonJobsRepository implements JobsRepository {
     if (data.stats !== undefined) target.stats = data.stats;
 
     await writeBdHelper(bdData);
+    return target;
   }
 }
