@@ -2,12 +2,12 @@
 import { storeToRefs } from 'pinia'
 import { computed, onUnmounted, ref, useCssModule, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { HomeRoute } from '@/app/router-setup/routes/user-scope-routes.ts'
 import { useJobs } from '@/entities/jobs'
 import { useAsyncOperation } from '@/shared/lib/async-operation'
 import { AsyncWrapper } from '@/shared/ui/async-wrapper'
 import JobDetailCard from './ui/JobDetailCard.vue'
 import UrlsDetailTable from './ui/UrlsDetailTable.vue'
-import { HomeRoute } from '@/app/router-setup/routes/user-scope-routes.ts'
 
 const styles = useCssModule()
 const route = useRoute()
@@ -62,7 +62,10 @@ const goHomeRoute = HomeRoute()
 function onDeleteJob() {
   stopPolling()
   goHomeRoute.push({
-    query: {},
+    query: {
+      page: 1,
+      limit: 10,
+    },
   })
 }
 onUnmounted(stopPolling)
@@ -81,7 +84,7 @@ onUnmounted(stopPolling)
         is-error-fixed
       >
         <template v-if="jobDetail">
-          <JobDetailCard :data-job="jobDetail" @deleteSuccess="onDeleteJob" />
+          <JobDetailCard :data-job="jobDetail" @delete-success="onDeleteJob" />
           <UrlsDetailTable :data-urls="jobDetail?.urls || []" />
         </template>
 

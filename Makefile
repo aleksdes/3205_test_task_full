@@ -20,3 +20,7 @@ restart:
 	pnpm generate-api:frontend
 	kill %1 2>/dev/null || true
 	pnpm dev
+
+build:
+	pnpm build:backend
+	pnpm build:frontend

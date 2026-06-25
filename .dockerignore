@@ -6,6 +6,13 @@ apps/backend/dist
 apps/frontend/node_modules
 apps/frontend/dist
 
+.env
+.env.example
+.husky/
+.vscode/
+Makefile
+Dockerfile
+/cursor
 /ci-cd
 /.github
 /.cursor

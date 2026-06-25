@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express, { type Express, type Request, type Response } from 'express';
+import path from 'path';
 import swaggerUi from 'swagger-ui-express';
 
 import { createGetDataRouter } from './controllers/jobs';
@@ -32,6 +33,13 @@ export function createApp(): Express {
       },
     }),
   );
+
+  const frontendDist = path.resolve(__dirname, '../../frontend/dist');
+  app.use(express.static(frontendDist));
+
+  app.get('/{*path}', (_req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not Found' });

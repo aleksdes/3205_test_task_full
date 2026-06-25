@@ -7,7 +7,7 @@ import Dialog from 'primevue/dialog'
 import FloatLabel from 'primevue/floatlabel'
 import Textarea from 'primevue/textarea'
 import { Field, Form } from 'vee-validate'
-import { computed, reactive, ref, toRefs } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { z } from '@/shared/lib/zod-validate'
 import { FieldMessage } from '@/shared/ui'
 import { useJobCreate } from '../model'
@@ -56,7 +56,7 @@ const stateSchema = z.object({
     .string()
     .min(1, 'Поле обязательно для заполнения')
     .refine(
-      (val: string) => val.split(',').every((u) => urlPattern.test(u.trim())),
+      (val: string) => val.split(',').every((u: string) => urlPattern.test(u.trim())),
       'Каждая строка должна быть валидным URL (http:// или https://)',
     ),
 })

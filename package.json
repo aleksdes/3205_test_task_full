@@ -7,6 +7,7 @@
     "dev": "concurrently -n backend,frontend -c blue,green \"env-cmd -f .env pnpm run --filter @3205_test_task/backend dev\" \"env-cmd -f .env pnpm run --filter @3205_test_task/frontend dev\"",
     "build": "env-cmd -f .env pnpm -r build",
     "dev:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend dev",
+    "build:frontend": "env-cmd -f .env pnpm run --filter @3205_test_task/frontend build",
     "start:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend start",
     "build:backend": "env-cmd -f .env pnpm run --filter @3205_test_task/backend build",
     "dev:frontend": "env-cmd -f .env pnpm run --filter @3205_test_task/frontend dev",
