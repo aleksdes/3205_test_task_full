@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import Column from 'primevue/column'
-import DataTable from 'primevue/datatable'
-import Tag from 'primevue/tag'
-import { computed, useCssModule } from 'vue'
+import { computed, onUnmounted, ref, useCssModule, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useJobs } from '@/entities/jobs'
 import { useAsyncOperation } from '@/shared/lib/async-operation'
-import { dayjs } from '@/shared/lib/dayjs'
 import { AsyncWrapper } from '@/shared/ui/async-wrapper'
+import JobDetailCard from './ui/JobDetailCard.vue'
+import UrlsDetailTable from './ui/UrlsDetailTable.vue'
 
 const styles = useCssModule()
 const route = useRoute()
@@ -30,7 +28,32 @@ const {
   dependencies: [params],
 })
 
-const hasUrls = computed(() => (jobDetail.value?.urls?.length ?? 0) > 0)
+const pollingInterval = ref<ReturnType<typeof setInterval> | null>(null)
+
+function startPolling() {
+  stopPolling()
+  pollingInterval.value = setInterval(() => {
+    fetchJobDetail(params.value.jobId)
+  }, 5000)
+}
+
+function stopPolling() {
+  if (pollingInterval.value !== null) {
+    clearInterval(pollingInterval.value)
+    pollingInterval.value = null
+  }
+}
+
+watch(jobDetail, (detail) => {
+  if (detail && detail.status === 'in_progress') {
+    startPolling()
+  }
+  else {
+    stopPolling()
+  }
+}, { immediate: true })
+
+onUnmounted(stopPolling)
 </script>
 
 <template>
@@ -40,89 +63,15 @@ const hasUrls = computed(() => (jobDetail.value?.urls?.length ?? 0) > 0)
         :is-loading="fetchJobLoading"
         :error="fetchJobError"
         :is-updating="updatingJob"
-        loading-label="Загрузка задач..."
+        loading-label="Загрузка данных задачи..."
         is-loading-fixed
         is-updating-fixed
         is-error-fixed
       >
-        <div v-if="hasUrls">
-          <DataTable
-            :value="jobDetail?.urls"
-            striped-rows
-            size="small"
-            scrollable
-            scroll-height="700px"
-            :pt="{
-              wrapper: { class: 'overflow-x-auto' },
-            }"
-          >
-            <Column header="URL" style="max-width:300px" :pt="{ headerCell: { style: 'max-width:300px' }, bodyCell: { style: { maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } } }">
-              <template #body="{ data }">
-                <a
-                  :href="data.url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 underline"
-                >
-                  {{ data.url }}
-                </a>
-              </template>
-            </Column>
-            <Column header="Дата начала проверки">
-              <template #body="{ data }">
-                <template v-if="data.startTimeJob">
-                  {{ dayjs(data.startTimeJob).format('DD.MM.YYYY HH:mm') }}
-                </template>
-                <span v-else>—</span>
-              </template>
-            </Column>
-            <Column header="Дата окончания проверки">
-              <template #body="{ data }">
-                <template v-if="data.status === 'in_progress'">
-                  —
-                </template>
-                <template v-else-if="data.endTimeJob">
-                  {{ dayjs(data.endTimeJob).format('DD.MM.YYYY HH:mm') }}
-                </template>
-                <span v-else>—</span>
-              </template>
-            </Column>
-            <Column field="httpStatus" header="HTTP Status" body-style="text-align:center">
-              <template #body="{ data }">
-                <template v-if="data.httpStatus">
-                  {{ data.httpStatus }}
-                </template>
-                <span v-else>—</span>
-              </template>
-            </Column>
-            <Column header="Ошибка">
-              <template #body="{ data }">
-                <template v-if="data.errorMessage">
-                  {{ data.errorMessage }}
-                </template>
-                <span v-else>—</span>
-              </template>
-            </Column>
-            <Column field="status" header="Статус">
-              <template #body="{ data }">
-                <Tag
-                  v-if="data.status"
-                  :value="data.status"
-                  :severity="
-                    data.status === 'completed'
-                      ? 'success'
-                      : data.status === 'in_progress'
-                        ? 'info'
-                        : data.status === 'failed'
-                          ? 'danger'
-                          : 'warn'
-                  "
-                />
-                <span v-else>—</span>
-              </template>
-            </Column>
-          </DataTable>
-        </div>
+        <template v-if="jobDetail">
+          <JobDetailCard :data-job="jobDetail" />
+          <UrlsDetailTable :data-urls="jobDetail?.urls || []" />
+        </template>
 
         <template v-else>
           <div :class="styles['empty-state']">
@@ -163,6 +112,6 @@ const hasUrls = computed(() => (jobDetail.value?.urls?.length ?? 0) > 0)
   gap: 4px;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 700px;
 }
 </style>

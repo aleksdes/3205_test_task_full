@@ -266,6 +266,102 @@
 				"qzyuWPtcgeB8BC5KkUIa8"
 			],
 			"stats": "error"
+		},
+		{
+			"id": "CaHdeRuNSO9ot5x849mLu",
+			"createdAt": "2026-06-25T05:18:00.515Z",
+			"status": "completed",
+			"urlIds": [
+				"f58xjngn0TyArS69EsNTu",
+				"SFwB5sXkckUsxxSJJngTz",
+				"7LZVG8JyR_Sq9TTdP4bOb",
+				"VXBERT1StvhgOnPzN4fpm"
+			],
+			"stats": "error"
+		},
+		{
+			"id": "dMjBR_zXJHBO9uQZodQOh",
+			"createdAt": "2026-06-25T05:18:54.217Z",
+			"status": "completed",
+			"urlIds": [
+				"5jwgVzLBfB01NkwwGrqMT",
+				"anhMyDNcUBPxWk07005QS",
+				"fNYJMcNPSd9WnfDfUDROt",
+				"3IonKZCR0hfTj020inred",
+				"ag1_557Bjv3_Qit-bSw0z",
+				"JBll_8mJexCqYMAmOwREt",
+				"U-9_0xdss9JjC0dQIWMef",
+				"AxvsX2GAYRqPdJgZNABfu",
+				"iX6HA0nIsxmBfJJIYl5Ul",
+				"I4BqYM4L23CxjeK8DzcTG",
+				"-SYIRp8QVUEQkYuDUpTjv",
+				"gn5pp6xpoxfaU3PN3cVBR",
+				"IGu-9jXgZ0ELob_Mh-ME_",
+				"KHovcYrippHZkgZo6jh-K",
+				"AWHlX347qw3UIEELr73F-",
+				"FMpGXnWBLlfOUp_4uKFIu",
+				"OXd1HNuPOkmW_aliBHFWJ",
+				"fU9eEQUj4rRZRDR28D1Uk",
+				"X9pCriRwiBAEUEfZpVxln",
+				"3q8LaqVM1HifTksZoGIWR"
+			],
+			"stats": "error"
+		},
+		{
+			"id": "HgB31kYwazccGXhx6Ow05",
+			"createdAt": "2026-06-25T05:20:37.050Z",
+			"status": "completed",
+			"urlIds": [
+				"e19Gpv5BQLf82PsLgyzSC",
+				"VHDMLFZ8J2b0T9UtczjyX",
+				"N537rKvHmhOvFhxYxMe5A",
+				"pPzn-AMQ2pGvxJgHk6dys",
+				"3MgsDuE_yl-n9c9FzGwDG",
+				"WTb4d2Or6CoWWkhr0OK1w",
+				"9g8AQxRqjVQo8ZSV-8MJL",
+				"WZN5W9UYu59fa7BBDaiBV",
+				"lbrvMrFHzuAEVj9gIIUDR",
+				"1p3ptg5mIcTo3iN5rVHQq",
+				"aGztDsJSIbto9LSnKmhlv",
+				"ZEy4j-u-5ZdsDXFj23Wkz",
+				"2w-vUPMTpFhH6BUVWGpmE",
+				"1Ile2aJTXkZnw5Fk6JK1H",
+				"zH-be6ncpw0h_WELKDrYY",
+				"ytgYTu32EVDmj8PVbSCz7",
+				"EKO4OPiuINkbGZqJVKZT5",
+				"fDzfdcMsC2S-mdoCwOGfD",
+				"pefKedCstzcDEyrrtlIbl",
+				"lgYX-BS8Mqje-7DXCXalV"
+			],
+			"stats": "error"
+		},
+		{
+			"id": "_IDYT7FLi3aVs-R68qri3",
+			"createdAt": "2026-06-25T05:23:37.101Z",
+			"status": "completed",
+			"urlIds": [
+				"w8LoP_q4FX7c5Kh8Vz3bE",
+				"JUhMDfkaIYOjxanfL52Ra",
+				"Ajs6cR4BOJb5gNIOOJ96H",
+				"QUUEbc5pcNS7an8iuN17G",
+				"yLhp3jDsss7-eF-I8dGjZ",
+				"jGXxiC8wbmBtZ3IECc5rU",
+				"brKe13IPE1TqbWa_g9WQt",
+				"e32aK2x2m7NuqwvkN6o_i",
+				"nw0SEJ9LLpkdJ9hpuB0Es",
+				"d-wGHva9SfG8A0sx_9XQ_",
+				"MVDFSwEQlwTB3xxifOoQN",
+				"WZaPScjQPjVUMXrNGjJcG",
+				"pjqUVxNjg-fLuTlZLA6Lj",
+				"epNQW0t6ip9sajVpbMabI",
+				"a99lmpFNf_gKhxrdqDUA4",
+				"AxST1xrui19GcPngDJfs3",
+				"sY6tarOI3UwX_eRLgf1bQ",
+				"UY8DFwrfsTMrpTLqMqqFC",
+				"3SH5qYUpeozBuFn3m4MTw",
+				"ZnwIRNrIu64x2IFdbvFGi"
+			],
+			"stats": "error"
 		}
 	],
 	"taskUrls": [
@@ -1080,6 +1176,563 @@
 			"errorMessage": "This operation was aborted",
 			"endTimeJob": "2026-06-25T02:14:31.818Z",
 			"startTimeJob": "2026-06-25T02:14:13.520Z"
+		},
+		{
+			"id": "f58xjngn0TyArS69EsNTu",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "CaHdeRuNSO9ot5x849mLu",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:18:08.355Z"
+		},
+		{
+			"id": "SFwB5sXkckUsxxSJJngTz",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "CaHdeRuNSO9ot5x849mLu",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:18:09.387Z"
+		},
+		{
+			"id": "7LZVG8JyR_Sq9TTdP4bOb",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "CaHdeRuNSO9ot5x849mLu",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:18:06.562Z"
+		},
+		{
+			"id": "VXBERT1StvhgOnPzN4fpm",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "CaHdeRuNSO9ot5x849mLu",
+			"status": "error",
+			"startTimeJob": "2026-06-25T05:18:00.534Z",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:18:13.810Z"
+		},
+		{
+			"id": "5jwgVzLBfB01NkwwGrqMT",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:02.720Z"
+		},
+		{
+			"id": "anhMyDNcUBPxWk07005QS",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:03.062Z"
+		},
+		{
+			"id": "fNYJMcNPSd9WnfDfUDROt",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:02.320Z"
+		},
+		{
+			"id": "3IonKZCR0hfTj020inred",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:19:12.246Z"
+		},
+		{
+			"id": "ag1_557Bjv3_Qit-bSw0z",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:18:54.234Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:18:57.076Z"
+		},
+		{
+			"id": "JBll_8mJexCqYMAmOwREt",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:13.211Z"
+		},
+		{
+			"id": "U-9_0xdss9JjC0dQIWMef",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:16.771Z"
+		},
+		{
+			"id": "AxvsX2GAYRqPdJgZNABfu",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:19:30.228Z"
+		},
+		{
+			"id": "iX6HA0nIsxmBfJJIYl5Ul",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:19:12.254Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:18.022Z"
+		},
+		{
+			"id": "I4BqYM4L23CxjeK8DzcTG",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:16.233Z"
+		},
+		{
+			"id": "-SYIRp8QVUEQkYuDUpTjv",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:40.159Z"
+		},
+		{
+			"id": "gn5pp6xpoxfaU3PN3cVBR",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:19:50.118Z"
+		},
+		{
+			"id": "IGu-9jXgZ0ELob_Mh-ME_",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:30.862Z"
+		},
+		{
+			"id": "KHovcYrippHZkgZo6jh-K",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:35.766Z"
+		},
+		{
+			"id": "AWHlX347qw3UIEELr73F-",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:19:30.239Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:33.715Z"
+		},
+		{
+			"id": "FMpGXnWBLlfOUp_4uKFIu",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:20:04.987Z"
+		},
+		{
+			"id": "OXd1HNuPOkmW_aliBHFWJ",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:53.602Z"
+		},
+		{
+			"id": "fU9eEQUj4rRZRDR28D1Uk",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:58.367Z"
+		},
+		{
+			"id": "X9pCriRwiBAEUEfZpVxln",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "success",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:19:52.273Z"
+		},
+		{
+			"id": "3q8LaqVM1HifTksZoGIWR",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "dMjBR_zXJHBO9uQZodQOh",
+			"status": "error",
+			"startTimeJob": "2026-06-25T05:19:50.127Z",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:20:01.052Z"
+		},
+		{
+			"id": "e19Gpv5BQLf82PsLgyzSC",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:37.076Z",
+			"endTimeJob": "2026-06-25T05:20:46.468Z"
+		},
+		{
+			"id": "VHDMLFZ8J2b0T9UtczjyX",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:37.076Z",
+			"endTimeJob": "2026-06-25T05:20:44.945Z"
+		},
+		{
+			"id": "N537rKvHmhOvFhxYxMe5A",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:37.076Z",
+			"endTimeJob": "2026-06-25T05:20:45.591Z"
+		},
+		{
+			"id": "pPzn-AMQ2pGvxJgHk6dys",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "error",
+			"startTimeJob": "2026-06-25T05:20:37.076Z",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:20:53.686Z"
+		},
+		{
+			"id": "3MgsDuE_yl-n9c9FzGwDG",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:37.076Z",
+			"endTimeJob": "2026-06-25T05:20:43.515Z"
+		},
+		{
+			"id": "WTb4d2Or6CoWWkhr0OK1w",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:53.698Z",
+			"endTimeJob": "2026-06-25T05:21:02.113Z"
+		},
+		{
+			"id": "9g8AQxRqjVQo8ZSV-8MJL",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:53.698Z",
+			"endTimeJob": "2026-06-25T05:21:03.482Z"
+		},
+		{
+			"id": "WZN5W9UYu59fa7BBDaiBV",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:20:53.698Z",
+			"endTimeJob": "2026-06-25T05:21:07.591Z"
+		},
+		{
+			"id": "lbrvMrFHzuAEVj9gIIUDR",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:20:53.698Z",
+			"endTimeJob": "2026-06-25T05:20:57.701Z"
+		},
+		{
+			"id": "1p3ptg5mIcTo3iN5rVHQq",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:20:53.698Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:20:56.826Z"
+		},
+		{
+			"id": "aGztDsJSIbto9LSnKmhlv",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:07.605Z",
+			"endTimeJob": "2026-06-25T05:21:15.102Z"
+		},
+		{
+			"id": "ZEy4j-u-5ZdsDXFj23Wkz",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:21:07.605Z",
+			"endTimeJob": "2026-06-25T05:21:19.353Z"
+		},
+		{
+			"id": "2w-vUPMTpFhH6BUVWGpmE",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:07.605Z",
+			"endTimeJob": "2026-06-25T05:21:13.533Z"
+		},
+		{
+			"id": "1Ile2aJTXkZnw5Fk6JK1H",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:07.605Z",
+			"endTimeJob": "2026-06-25T05:21:08.372Z"
+		},
+		{
+			"id": "zH-be6ncpw0h_WELKDrYY",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:21:07.605Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:21:13.102Z"
+		},
+		{
+			"id": "ytgYTu32EVDmj8PVbSCz7",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:21:19.363Z",
+			"endTimeJob": "2026-06-25T05:21:38.071Z"
+		},
+		{
+			"id": "EKO4OPiuINkbGZqJVKZT5",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:19.363Z",
+			"endTimeJob": "2026-06-25T05:21:24.609Z"
+		},
+		{
+			"id": "fDzfdcMsC2S-mdoCwOGfD",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:19.363Z",
+			"endTimeJob": "2026-06-25T05:21:22.332Z"
+		},
+		{
+			"id": "pefKedCstzcDEyrrtlIbl",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:21:19.363Z",
+			"endTimeJob": "2026-06-25T05:21:21.123Z"
+		},
+		{
+			"id": "lgYX-BS8Mqje-7DXCXalV",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "HgB31kYwazccGXhx6Ow05",
+			"status": "error",
+			"startTimeJob": "2026-06-25T05:21:19.363Z",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:21:36.469Z"
+		},
+		{
+			"id": "w8LoP_q4FX7c5Kh8Vz3bE",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:23:37.126Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:23:45.466Z"
+		},
+		{
+			"id": "JUhMDfkaIYOjxanfL52Ra",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:37.126Z",
+			"endTimeJob": "2026-06-25T05:23:38.233Z"
+		},
+		{
+			"id": "Ajs6cR4BOJb5gNIOOJ96H",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:37.127Z",
+			"endTimeJob": "2026-06-25T05:23:37.563Z"
+		},
+		{
+			"id": "QUUEbc5pcNS7an8iuN17G",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:23:37.127Z",
+			"endTimeJob": "2026-06-25T05:23:55.693Z"
+		},
+		{
+			"id": "yLhp3jDsss7-eF-I8dGjZ",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:37.127Z",
+			"endTimeJob": "2026-06-25T05:23:46.203Z"
+		},
+		{
+			"id": "jGXxiC8wbmBtZ3IECc5rU",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:23:55.706Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:24:00.516Z"
+		},
+		{
+			"id": "brKe13IPE1TqbWa_g9WQt",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:55.706Z",
+			"endTimeJob": "2026-06-25T05:24:00.651Z"
+		},
+		{
+			"id": "e32aK2x2m7NuqwvkN6o_i",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:23:55.707Z",
+			"endTimeJob": "2026-06-25T05:24:11.715Z"
+		},
+		{
+			"id": "nw0SEJ9LLpkdJ9hpuB0Es",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:55.707Z",
+			"endTimeJob": "2026-06-25T05:24:00.737Z"
+		},
+		{
+			"id": "d-wGHva9SfG8A0sx_9XQ_",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:23:55.707Z",
+			"endTimeJob": "2026-06-25T05:24:01.898Z"
+		},
+		{
+			"id": "MVDFSwEQlwTB3xxifOoQN",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:11.725Z",
+			"endTimeJob": "2026-06-25T05:24:18.650Z"
+		},
+		{
+			"id": "WZaPScjQPjVUMXrNGjJcG",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:24:11.725Z",
+			"endTimeJob": "2026-06-25T05:24:28.237Z"
+		},
+		{
+			"id": "pjqUVxNjg-fLuTlZLA6Lj",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:11.725Z",
+			"endTimeJob": "2026-06-25T05:24:17.189Z"
+		},
+		{
+			"id": "epNQW0t6ip9sajVpbMabI",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:11.725Z",
+			"endTimeJob": "2026-06-25T05:24:13.443Z"
+		},
+		{
+			"id": "a99lmpFNf_gKhxrdqDUA4",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"startTimeJob": "2026-06-25T05:24:11.725Z",
+			"httpStatus": 200,
+			"endTimeJob": "2026-06-25T05:24:12.086Z"
+		},
+		{
+			"id": "AxST1xrui19GcPngDJfs3",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "error",
+			"errorMessage": "This operation was aborted",
+			"startTimeJob": "2026-06-25T05:24:28.245Z",
+			"endTimeJob": "2026-06-25T05:24:43.417Z"
+		},
+		{
+			"id": "sY6tarOI3UwX_eRLgf1bQ",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:28.245Z",
+			"endTimeJob": "2026-06-25T05:24:32.217Z"
+		},
+		{
+			"id": "UY8DFwrfsTMrpTLqMqqFC",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:28.245Z",
+			"endTimeJob": "2026-06-25T05:24:32.944Z"
+		},
+		{
+			"id": "3SH5qYUpeozBuFn3m4MTw",
+			"url": "https://www.google.com/webhp?hl=ru&sa=X&ved=0ahUKEwi0qIrssJ2VAxU7KhAIHYwnO8UQPAgI",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "success",
+			"httpStatus": 200,
+			"startTimeJob": "2026-06-25T05:24:28.245Z",
+			"endTimeJob": "2026-06-25T05:24:29.095Z"
+		},
+		{
+			"id": "ZnwIRNrIu64x2IFdbvFGi",
+			"url": "https://www.youtube.com/watch?v=rPaRVcH9big",
+			"jobId": "_IDYT7FLi3aVs-R68qri3",
+			"status": "error",
+			"startTimeJob": "2026-06-25T05:24:28.245Z",
+			"errorMessage": "This operation was aborted",
+			"endTimeJob": "2026-06-25T05:24:40.477Z"
 		}
 	]
 }

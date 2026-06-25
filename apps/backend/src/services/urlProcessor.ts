@@ -99,12 +99,14 @@ export class UrlProcessor {
 
     if (errorMessage) {
       await this.repository.updateTaskUrl(taskUrl.id, {
+        startTimeJob: startTime,
         status: 'error',
         errorMessage,
         endTimeJob: endTime,
       });
     } else {
       await this.repository.updateTaskUrl(taskUrl.id, {
+        startTimeJob: startTime,
         status: 'success',
         httpStatus,
         endTimeJob: endTime,

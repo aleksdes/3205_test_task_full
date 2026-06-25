@@ -84,6 +84,7 @@ async function onActivateJob(jobId: string) {
               wrapper: { class: 'overflow-x-auto' },
               row: { class: 'cursor-pointer' },
             }"
+            class="jobs-table"
             @row-click="(e) => goDetail(e.data.id)"
           >
             <Column field="id" header="ID">
@@ -98,7 +99,7 @@ async function onActivateJob(jobId: string) {
             </Column>
             <Column
               header="Количество Url"
-              header-class="jobs-table__url-header"
+              header-class="jobs-table__header-center"
               body-style="text-align:center"
             >
               <template #body="{ data }">
@@ -118,6 +119,22 @@ async function onActivateJob(jobId: string) {
                         : data.status === 'failed'
                           ? 'danger'
                           : 'warn'
+                  "
+                />
+                <span v-else>—</span>
+              </template>
+            </Column>
+            <Column field="stats" header="Статус">
+              <template #body="{ data }">
+                <Tag
+                  v-if="data.stats"
+                  :value="data.stats"
+                  :severity="
+                    data.stats === 'success'
+                      ? 'success'
+                      : data.stats === 'error'
+                        ? 'danger'
+                        : 'warn'
                   "
                 />
                 <span v-else>—</span>
@@ -160,7 +177,7 @@ async function onActivateJob(jobId: string) {
 </template>
 
 <style lang="scss" scoped>
-:deep(.jobs-table__url-header div) {
+:deep(.jobs-table__header-center div) {
   justify-content: center;
 }
 </style>
@@ -192,7 +209,7 @@ async function onActivateJob(jobId: string) {
   gap: 4px;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 700px;
 }
 
 .paginator-wrapper {
