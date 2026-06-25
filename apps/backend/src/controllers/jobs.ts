@@ -1,9 +1,9 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
+import { body, validationResult } from 'express-validator';
 
 import { JobsNotFoundError, UrlNotFoundError } from '@/entities/jobs/jobsErrors';
 import type { JobsService } from '@/entities/jobs/jobService';
 import { BDNotFoundError } from '@/services/errorService';
-import isUrl from 'swift-url-check';
 
 /** Контроллер для задач (jobs). */
 export function createGetDataRouter(jobService: JobsService): Router {
@@ -288,18 +288,29 @@ export function createGetDataRouter(jobService: JobsService): Router {
    *             schema:
    *               $ref: '#/components/schemas/Error'
    */
-  router.post('/jobs', async (req: Request, res: Response, next: NextFunction) => {
-    const urls: string[] = req.body.urls || [];
+  const validateCreateJob = [
+    body('urls')
+      .isArray({ min: 1 })
+      .withMessage('Not added url by task'),
+    body('urls.*')
+      .isString()
+      .trim()
+      .isURL({
+        require_protocol: true,
+        protocols: ['http', 'https'],
+        disallow_auth: true,
+      })
+      .withMessage('Each URL must be a valid http/https url'),
+  ];
 
-    if (!urls.length) {
-      res.status(400).json({ error: 'Not added url by task' });
+  router.post('/jobs', validateCreateJob, async (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ error: errors.array().map((e) => e.msg).join('; ') });
       return;
     }
 
-    if (!urls.every((url) => isUrl(url, { allowLocal: false }))) {
-      res.status(400).json({ error: 'All urls must be a valid url' });
-      return;
-    }
+    const urls: string[] = req.body.urls;
 
     try {
       const dataJob = await jobService.createJob({ urls });
