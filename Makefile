@@ -12,7 +12,7 @@ setup:
 
 init:
 	pnpm install
-	cp -n .env.example .env || 
+	cp -n .env.example .env || true
 	pnpm build:backend
 	pnpm --filter @3205_test_task/backend start &
 	sleep 2
