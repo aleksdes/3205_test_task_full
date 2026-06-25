@@ -5,7 +5,7 @@ export function useJobDelete() {
   const apiClient = useApiClient()
 
   async function jobDelete(jobId: string) {
-    return await apiClient.jobs.jobsActivationDetail(jobId)
+    return await apiClient.jobs.jobsDelete(jobId)
   }
 
   const {

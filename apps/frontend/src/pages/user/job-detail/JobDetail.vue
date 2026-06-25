@@ -7,6 +7,7 @@ import { useAsyncOperation } from '@/shared/lib/async-operation'
 import { AsyncWrapper } from '@/shared/ui/async-wrapper'
 import JobDetailCard from './ui/JobDetailCard.vue'
 import UrlsDetailTable from './ui/UrlsDetailTable.vue'
+import { HomeRoute } from '@/app/router-setup/routes/user-scope-routes.ts'
 
 const styles = useCssModule()
 const route = useRoute()
@@ -44,15 +45,26 @@ function stopPolling() {
   }
 }
 
-watch(jobDetail, (detail) => {
-  if (detail && detail.status === 'in_progress') {
-    startPolling()
-  }
-  else {
-    stopPolling()
-  }
-}, { immediate: true })
+watch(
+  jobDetail,
+  (detail) => {
+    if (detail && detail.status === 'in_progress') {
+      startPolling()
+    } else {
+      stopPolling()
+    }
+  },
+  { immediate: true },
+)
 
+const goHomeRoute = HomeRoute()
+
+function onDeleteJob() {
+  stopPolling()
+  goHomeRoute.push({
+    query: {},
+  })
+}
 onUnmounted(stopPolling)
 </script>
 
@@ -69,7 +81,7 @@ onUnmounted(stopPolling)
         is-error-fixed
       >
         <template v-if="jobDetail">
-          <JobDetailCard :data-job="jobDetail" />
+          <JobDetailCard :data-job="jobDetail" @deleteSuccess="onDeleteJob" />
           <UrlsDetailTable :data-urls="jobDetail?.urls || []" />
         </template>
 

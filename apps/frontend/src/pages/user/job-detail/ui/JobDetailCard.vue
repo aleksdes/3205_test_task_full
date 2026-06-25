@@ -1,29 +1,56 @@
 <script setup lang="ts">
-import type { IJobDetailCardProps } from './job-detail-card'
+import type { IJobDetailCardEmits, IJobDetailCardProps } from './job-detail-card'
+import Button from 'primevue/button'
 import Card from 'primevue/card'
 import ProgressBar from 'primevue/progressbar'
+
 import Tag from 'primevue/tag'
 import { computed, toRefs, useCssModule } from 'vue'
+import { useJobDelete } from '@/features/jobs/job-delete'
 import { dayjs } from '@/shared/lib/dayjs'
 
 const props = defineProps<IJobDetailCardProps>()
+const emits = defineEmits<IJobDetailCardEmits>()
+
 const styles = useCssModule()
 
 const { dataJob } = toRefs(props)
+const { deleteJob, deleteJobError, loadingDeleteJob } = useJobDelete()
 
 const urlsTotal = computed(() => dataJob.value?.urls?.length ?? 0)
 const urlsProcessed = computed(
-  () => dataJob.value?.urls?.filter(u => u.status && u.status !== 'pending').length ?? 0,
+  () => dataJob.value?.urls?.filter((u) => u.status && u.status !== 'pending').length ?? 0,
 )
 const progressPercent = computed(() =>
   urlsTotal.value > 0 ? Math.round((urlsProcessed.value / urlsTotal.value) * 100) : 0,
 )
+
+async function onDeleteJob() {
+  if (!dataJob.value) return
+  await deleteJob(dataJob.value.id)
+
+  if (!deleteJobError.value) {
+    emits('deleteSuccess')
+  }
+}
 </script>
 
 <template>
   <Card :class="styles['job-card']">
     <template #title>
-      Детальная информация: {{ dataJob.id }}
+      <div class="flex flex-row justify-between">
+        <span>Детальная информация: {{ dataJob.id }}</span>
+
+        <Button
+          label="Отменить задание"
+          title="Отменить задание"
+          icon="pi pi-trash"
+          size="small"
+          severity="primary"
+          :disabled="loadingDeleteJob"
+          @click="onDeleteJob"
+        />
+      </div>
     </template>
     <template #content>
       <div :class="styles['card-content']">
@@ -54,7 +81,7 @@ const progressPercent = computed(() =>
           <div :class="styles['info-field']">
             <span :class="styles['info-label']">Статус</span>
             <Tag
-              v-if="dataJob.stats"
+              v-if="dataJob.stats && dataJob.status !== 'in_progress'"
               :value="dataJob.stats"
               :severity="
                 dataJob.stats === 'success'

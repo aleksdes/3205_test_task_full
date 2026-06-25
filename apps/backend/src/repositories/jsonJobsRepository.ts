@@ -36,8 +36,26 @@ async function writeBdHelper(data: BdJsonType): Promise<void> {
   await fs.writeFile(localBDfile(), json, 'utf-8');
 }
 
+class AsyncMutex {
+  private current: Promise<void> = Promise.resolve();
+
+  async run<T>(fn: () => Promise<T>): Promise<T> {
+    const prev = this.current;
+    let release: () => void;
+    this.current = new Promise<void>((resolve) => { release = resolve; });
+
+    await prev.catch(() => {});
+    try {
+      return await fn();
+    } finally {
+      release!();
+    }
+  }
+}
+
 /** Репозиторий: чтение и запись процессов в виде `<имя>.json` в каталоге данных. */
 export class JsonJobsRepository implements JobsRepository {
+  private mutex = new AsyncMutex();
   public async get(page = 1, limit = 10): Promise<PaginatedResult<JobTask>> {
     const bdData = await readBdHelper();
     const sorted = bdData.jobs.sort(
@@ -61,38 +79,42 @@ export class JsonJobsRepository implements JobsRepository {
   }
 
   public async save(urls: string[]): Promise<JobTask> {
-    const newJob = new JobTask();
-    newJob.markStatus('pending');
+    return await this.mutex.run(async () => {
+      const newJob = new JobTask();
+      newJob.markStatus('pending');
 
-    const newUrls: TaskUrl[] = urls.map(
-      (item: string) =>
-        new TaskUrl({
-          url: item,
-          jobId: newJob.id,
-          status: null,
-        }),
-    );
+      const newUrls: TaskUrl[] = urls.map(
+        (item: string) =>
+          new TaskUrl({
+            url: item,
+            jobId: newJob.id,
+            status: null,
+          }),
+      );
 
-    const bdData = await readBdHelper();
-    bdData.taskUrls.push(...newUrls);
-    newJob.updateUrlIds(newUrls.map((item) => item.id));
-    bdData.jobs.push(newJob);
+      const bdData = await readBdHelper();
+      bdData.taskUrls.push(...newUrls);
+      newJob.updateUrlIds(newUrls.map((item) => item.id));
+      bdData.jobs.push(newJob);
 
-    await writeBdHelper(bdData);
-    return newJob;
+      await writeBdHelper(bdData);
+      return newJob;
+    });
   }
 
   public async removeJob(id: string): Promise<void> {
-    const bdData = await readBdHelper();
-    const exists = bdData.jobs.some((item) => item.id === id);
-    if (!exists) {
-      throw new JobsNotFoundError(id);
-    }
+    return await this.mutex.run(async () => {
+      const bdData = await readBdHelper();
+      const exists = bdData.jobs.some((item) => item.id === id);
+      if (!exists) {
+        throw new JobsNotFoundError(id);
+      }
 
-    const newJobs = bdData.jobs.filter((item) => item.id !== id);
-    const newUrls = bdData.taskUrls.filter((item) => item.jobId !== id);
+      const newJobs = bdData.jobs.filter((item) => item.id !== id);
+      const newUrls = bdData.taskUrls.filter((item) => item.jobId !== id);
 
-    await writeBdHelper({ jobs: newJobs, taskUrls: newUrls });
+      await writeBdHelper({ jobs: newJobs, taskUrls: newUrls });
+    });
   }
 
   public async getJobUrls(jobId: string): Promise<TaskUrl[]> {
@@ -121,22 +143,24 @@ export class JsonJobsRepository implements JobsRepository {
       endTimeJob?: Date;
     },
   ): Promise<void> {
-    const bdData = await readBdHelper();
-    const idx = bdData.taskUrls.findIndex((item) => item.id === taskUrlId);
+    return await this.mutex.run(async () => {
+      const bdData = await readBdHelper();
+      const idx = bdData.taskUrls.findIndex((item) => item.id === taskUrlId);
 
-    if (idx === -1) {
-      throw new UrlNotFoundError(taskUrlId);
-    }
+      if (idx === -1) {
+        throw new UrlNotFoundError(taskUrlId);
+      }
 
-    const target = bdData.taskUrls[idx];
+      const target = bdData.taskUrls[idx];
 
-    if (data.status !== undefined) target.status = data.status;
-    if (data.httpStatus !== undefined) target.httpStatus = data.httpStatus;
-    if (data.errorMessage !== undefined) target.errorMessage = data.errorMessage;
-    if (data.startTimeJob !== undefined) target.startTimeJob = data.startTimeJob;
-    if (data.endTimeJob !== undefined) target.endTimeJob = data.endTimeJob;
+      if (data.status !== undefined) target.status = data.status;
+      if (data.httpStatus !== undefined) target.httpStatus = data.httpStatus;
+      if (data.errorMessage !== undefined) target.errorMessage = data.errorMessage;
+      if (data.startTimeJob !== undefined) target.startTimeJob = data.startTimeJob;
+      if (data.endTimeJob !== undefined) target.endTimeJob = data.endTimeJob;
 
-    await writeBdHelper(bdData);
+      await writeBdHelper(bdData);
+    });
   }
 
   public async updateJob(
@@ -146,19 +170,21 @@ export class JsonJobsRepository implements JobsRepository {
       stats?: JobTaskStats | null;
     },
   ): Promise<JobTask> {
-    const bdData = await readBdHelper();
-    const idx = bdData.jobs.findIndex((item) => item.id === jobId);
+    return await this.mutex.run(async () => {
+      const bdData = await readBdHelper();
+      const idx = bdData.jobs.findIndex((item) => item.id === jobId);
 
-    if (idx === -1) {
-      throw new JobsNotFoundError(jobId);
-    }
+      if (idx === -1) {
+        throw new JobsNotFoundError(jobId);
+      }
 
-    const target = bdData.jobs[idx];
+      const target = bdData.jobs[idx];
 
-    if (data.status !== undefined) target.status = data.status;
-    if (data.stats !== undefined) target.stats = data.stats;
+      if (data.status !== undefined) target.status = data.status;
+      if (data.stats !== undefined) target.stats = data.stats;
 
-    await writeBdHelper(bdData);
-    return target;
+      await writeBdHelper(bdData);
+      return target;
+    });
   }
 }

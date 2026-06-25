@@ -10,6 +10,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { JobDetailRoute } from '@/app/router-setup/routes/user-scope-routes'
 import { useJobs } from '@/entities/jobs'
 import { useJobActivation } from '@/features/jobs/job-activation'
+import { JobCreateFeature } from '@/features/jobs/job-crete'
 import { useAsyncOperation } from '@/shared/lib/async-operation'
 import { dayjs } from '@/shared/lib/dayjs'
 import { AsyncWrapper } from '@/shared/ui/async-wrapper'
@@ -73,6 +74,7 @@ async function onActivateJob(jobId: string) {
         is-updating-fixed
         is-error-fixed
       >
+        <JobCreateFeature @create-success="_refetchJobs" />
         <div v-if="hasJobs">
           <DataTable
             :value="jobs"
@@ -127,7 +129,7 @@ async function onActivateJob(jobId: string) {
             <Column field="stats" header="Статус">
               <template #body="{ data }">
                 <Tag
-                  v-if="data.stats"
+                  v-if="data.stats && data.status !== 'in_progress'"
                   :value="data.stats"
                   :severity="
                     data.stats === 'success'

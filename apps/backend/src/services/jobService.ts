@@ -47,6 +47,10 @@ export class JobService implements JobsService {
   }
 
   public async deleteJob(jobId: string): Promise<void> {
+    const job = await this.jobRepository.getOne(jobId);
+    if (job.status === 'in_progress') {
+      this.urlProcessor.cancelJob(jobId);
+    }
     return await this.jobRepository.removeJob(jobId);
   }
 

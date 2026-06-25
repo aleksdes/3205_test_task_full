@@ -1,1 +1,1 @@
-export { useJobCanceled } from './model'
+export { useJobDelete } from './model'
