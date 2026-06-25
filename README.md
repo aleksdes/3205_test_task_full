@@ -12,13 +12,16 @@ docker compose up -d
 
 # Frontend будет доступен на http://localhost:8000/jobs
 # ===================
+```
 
+```
 # Локальное разворачивание
 # Быстрый старт (делает всё сразу)
 make setup
 # ===================
+```
 
-
+```
 # Или пошагово:
 pnpm install
 cp .env.example .env
