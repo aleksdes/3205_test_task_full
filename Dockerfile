@@ -14,7 +14,8 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN VITE_API_TARGET=${VITE_API_TARGET} pnpm -r build
+RUN pnpm --filter @3205_test_task/backend build
+RUN VITE_API_TARGET=${VITE_API_TARGET} pnpm --filter @3205_test_task/frontend build
 
 FROM node:22-alpine AS runner
 
